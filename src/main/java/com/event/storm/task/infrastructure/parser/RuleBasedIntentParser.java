@@ -70,7 +70,8 @@ public class RuleBasedIntentParser implements IntentParser {
         }
 
         SearchIntent current = session == null ? null : session.getIntent();
-        if (current != null) {
+        boolean hasRoute = ROUTE.matcher(low).find();
+        if (current != null && !hasRoute) {
             RefineCommand refine = refine(low, current);
             if (refine != null) {
                 return refine;

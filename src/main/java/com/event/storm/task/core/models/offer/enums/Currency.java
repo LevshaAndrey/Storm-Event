@@ -1,5 +1,8 @@
 package com.event.storm.task.core.models.offer.enums;
 
 public enum Currency {
-    BYN
+    BYN,
+    RUB,
+    USD,
+    EUR
 }

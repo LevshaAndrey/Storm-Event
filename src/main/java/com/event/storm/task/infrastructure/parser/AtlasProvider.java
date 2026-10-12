@@ -49,6 +49,8 @@ public class AtlasProvider implements SearchProvider {
     private static final String STATIONS_RESOURCE = "stations_by.json";
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ISO_LOCAL_DATE;
     private static final ZoneId ZONE = ZoneId.systemDefault();
+    private static final String USER_AGENT =
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 
     private static final Map<String, String> TRANSLIT_THREE = Map.of(
             "shch", "щ",
@@ -78,20 +80,26 @@ public class AtlasProvider implements SearchProvider {
     private final ObjectMapper objectMapper;
     private final String searchPath;
     private final String locale;
+    private final String projectIdentifier;
+    private final String applicationSource;
     private final int fuzzyMaxDistance;
     private final List<Station> stations;
     private final TreeMap<String, List<Station>> byNormalizedName;
 
     public AtlasProvider(RestClient.Builder restClientBuilder,
                          ObjectMapper objectMapper,
-                         @Value("${app.atlas.base-url:https://blackbox.atlasbus.by}") String baseUrl,
-                         @Value("${app.atlas.search-path:/api/v1/search}") String searchPath,
+                         @Value("${app.atlas.base-url:https://atlasbus.by}") String baseUrl,
+                         @Value("${app.atlas.search-path:/api/search}") String searchPath,
                          @Value("${app.atlas.locale:ru}") String locale,
+                         @Value("${app.atlas.project-identifier:morda}") String projectIdentifier,
+                         @Value("${app.atlas.application-source:web}") String applicationSource,
                          @Value("${app.atlas.fuzzy-max-distance:6}") int fuzzyMaxDistance) {
         this.restClient = restClientBuilder.baseUrl(baseUrl).build();
         this.objectMapper = objectMapper;
         this.searchPath = searchPath;
         this.locale = locale;
+        this.projectIdentifier = projectIdentifier;
+        this.applicationSource = applicationSource;
         this.fuzzyMaxDistance = fuzzyMaxDistance;
         this.stations = loadStations();
         this.byNormalizedName = index(stations);
@@ -135,15 +143,17 @@ public class AtlasProvider implements SearchProvider {
                 .queryParam("to_id", to.id())
                 .queryParam("date", date.format(DATE_FMT))
                 .queryParam("passengers", passengers)
-                .queryParam("locale", locale)
                 .build()
                 .encode()
                 .toUriString();
 
         ResponseEntity<String> response = restClient.get()
                 .uri(uri)
-                .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
-                .header(HttpHeaders.USER_AGENT, "Mozilla/5.0 (compatible; EventStormBot/1.0)")
+                .header(HttpHeaders.ACCEPT, "application/json")
+                .header(HttpHeaders.ACCEPT_LANGUAGE, locale)
+                .header(HttpHeaders.USER_AGENT, USER_AGENT)
+                .header("x-project-identifier", projectIdentifier)
+                .header("x-application-source", applicationSource)
                 .retrieve()
                 .toEntity(String.class);
 
@@ -169,24 +179,57 @@ public class AtlasProvider implements SearchProvider {
         if (id == null) {
             id = "atlas-" + from.id() + "-" + to.id() + "-" + date + "-" + index;
         }
-        String title = firstText(ride, "carrier", "carrierName", "carrier_name", "title", "name");
+        String title = firstText(ride, "carrier", "name", "carrierName", "carrier_name", "title");
         if (title == null) {
             title = "AtlasBus";
         }
 
-        Instant departure = parseInstant(ride, date, "departure", "departureTime", "departure_at", "departureDate", "fromTime");
-        Instant arrival = parseInstant(ride, date, "arrival", "arrivalTime", "arrival_at", "arrivalDate", "toTime");
+        ZoneId zone = rideZone(ride);
+        Instant departure = parseInstant(ride, date, zone, "departure", "departureTime", "departure_at", "departureDate", "fromTime");
+        Instant arrival = parseInstant(ride, date, zone, "arrival", "arrivalTime", "arrival_at", "arrivalDate", "toTime");
         Price price = parsePrice(ride);
         boolean direct = ride.hasNonNull("direct")
                 ? ride.get("direct").asBoolean()
                 : transfers(ride) == 0;
         String url = firstText(ride, "url", "deepLink", "link", "bookingUrl");
 
-        Location fromLocation = new Location(from.id(), from.name(), new GeoPoint(from.latitude(), from.longitude()));
-        Location toLocation = new Location(to.id(), to.name(), new GeoPoint(to.latitude(), to.longitude()));
+        Location fromLocation = rideLocation(ride, "from", from);
+        Location toLocation = rideLocation(ride, "to", to);
 
         return new TransportOffer(id, DomainType.BUS, Source.ATLAS, title,
                 fromLocation, toLocation, departure, arrival, price, direct, url);
+    }
+
+    private static ZoneId rideZone(JsonNode ride) {
+        for (String point : new String[]{"from", "to"}) {
+            JsonNode node = ride.get(point);
+            if (node != null && node.hasNonNull("timezone")) {
+                try {
+                    return ZoneId.of(node.get("timezone").asText());
+                } catch (Exception ignored) {
+                }
+            }
+        }
+        JsonNode tz = ride.get("timezone");
+        if (tz != null && tz.isTextual()) {
+            try {
+                return ZoneId.of(tz.asText());
+            } catch (Exception ignored) {
+            }
+        }
+        return ZONE;
+    }
+
+    private static Location rideLocation(JsonNode ride, String field, Station station) {
+        String name = station.name();
+        JsonNode node = ride.get(field);
+        if (node != null && node.hasNonNull("desc")) {
+            String desc = node.get("desc").asText();
+            if (!desc.isBlank()) {
+                name = desc;
+            }
+        }
+        return new Location(station.id(), name, new GeoPoint(station.latitude(), station.longitude()));
     }
 
     private static int transfers(JsonNode ride) {
@@ -213,21 +256,34 @@ public class AtlasProvider implements SearchProvider {
     }
 
     private Price parsePrice(JsonNode ride) {
-        JsonNode priceNode = ride.get("price");
-        BigDecimal amount = firstDecimal(ride, "priceByn", "priceBYN", "amount", "total", "priceAmount");
-        if (amount == null && priceNode != null) {
-            if (priceNode.isNumber()) {
-                amount = priceNode.decimalValue();
-            } else if (priceNode.isObject()) {
-                amount = firstDecimal(priceNode, "amount", "value", "byn", "BYN", "total");
-            } else if (priceNode.isTextual()) {
-                amount = toDecimal(priceNode.asText());
+        BigDecimal amount = firstDecimal(ride, "price", "priceByn", "priceBYN", "amount", "total", "priceAmount");
+        if (amount == null) {
+            JsonNode priceNode = ride.get("price");
+            if (priceNode != null && priceNode.isObject()) {
+                amount = firstDecimal(priceNode, "amount", "value", "total");
+            }
+        }
+        if (amount == null) {
+            JsonNode miles = ride.path("atlasMeta").path("miles").path("item").get("price");
+            if (miles != null && miles.isNumber()) {
+                amount = miles.decimalValue().movePointLeft(2);
             }
         }
         if (amount == null) {
             return null;
         }
-        return new Price(amount, Currency.BYN);
+        return new Price(amount, mapCurrency(firstText(ride, "currency")));
+    }
+
+    private static Currency mapCurrency(String raw) {
+        if (raw == null || raw.isBlank()) {
+            return Currency.BYN;
+        }
+        try {
+            return Currency.valueOf(raw.trim().toUpperCase(Locale.ROOT));
+        } catch (IllegalArgumentException e) {
+            return Currency.BYN;
+        }
     }
 
     private List<JsonNode> parsePayload(String body, String contentType) {
@@ -533,7 +589,7 @@ public class AtlasProvider implements SearchProvider {
         return previous[m];
     }
 
-    private static Instant parseInstant(JsonNode node, LocalDate date, String... fields) {
+    private static Instant parseInstant(JsonNode node, LocalDate date, ZoneId zone, String... fields) {
         for (String field : fields) {
             JsonNode value = node.get(field);
             if (value == null || value.isNull()) {
@@ -547,7 +603,7 @@ public class AtlasProvider implements SearchProvider {
             if (text.isEmpty()) {
                 continue;
             }
-            Instant parsed = parseInstantText(text, date);
+            Instant parsed = parseInstantText(text, date, zone);
             if (parsed != null) {
                 return parsed;
             }
@@ -555,7 +611,7 @@ public class AtlasProvider implements SearchProvider {
         return null;
     }
 
-    private static Instant parseInstantText(String text, LocalDate date) {
+    private static Instant parseInstantText(String text, LocalDate date, ZoneId zone) {
         if (text.matches("\\d{10,13}")) {
             long raw = Long.parseLong(text);
             return raw > 100_000_000_000L ? Instant.ofEpochMilli(raw) : Instant.ofEpochSecond(raw);
@@ -569,15 +625,15 @@ public class AtlasProvider implements SearchProvider {
         } catch (DateTimeParseException ignored) {
         }
         try {
-            return LocalDateTime.parse(text).atZone(ZONE).toInstant();
+            return LocalDateTime.parse(text).atZone(zone).toInstant();
         } catch (DateTimeParseException ignored) {
         }
         try {
-            return LocalTime.parse(text).atDate(date).atZone(ZONE).toInstant();
+            return LocalTime.parse(text).atDate(date).atZone(zone).toInstant();
         } catch (DateTimeParseException ignored) {
         }
         try {
-            return date.atStartOfDay(ZONE).toInstant();
+            return date.atStartOfDay(zone).toInstant();
         } catch (Exception ignored) {
             return null;
         }
