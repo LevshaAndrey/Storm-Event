@@ -36,7 +36,11 @@ import java.util.regex.Pattern;
 public class RuleBasedIntentParser implements IntentParser {
 
     private static final Pattern ROUTE =
-            Pattern.compile("из\\s+([а-яёa-z\\-]+)\\s+в\\s+([а-яёa-z\\-]+)", Pattern.CASE_INSENSITIVE);
+            Pattern.compile("из\\s+(.+?)\\s+в\\s+(.+)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern ROUTE_TRAILING =
+            Pattern.compile("\\s+(?:\\d+|на\\b|за\\b|через\\b|бюджет\\w*|самы\\w*|дешев\\w*|быстр\\w*"
+                    + "|лучш\\w*|оптимальн\\w*|взросл\\w*|реб[её]н\\w*|послезавтра|завтра|сегодня|числа).*$",
+                    Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CHARACTER_CLASS);
     private static final Pattern BUDGET =
             Pattern.compile("бюджет[\\s:]*([\\d]+)");
     private static final Pattern ADULTS =
@@ -157,9 +161,22 @@ public class RuleBasedIntentParser implements IntentParser {
         if (!matcher.find()) {
             return null;
         }
-        String from = matcher.group(1).trim();
-        String to = matcher.group(2).trim();
+        String from = cleanCity(matcher.group(1));
+        String to = cleanCity(matcher.group(2));
+        if (from.isEmpty() || to.isEmpty()) {
+            return null;
+        }
         return new Route(new Location(null, from, null), new Location(null, to, null));
+    }
+
+    private static String cleanCity(String value) {
+        if (value == null) {
+            return "";
+        }
+        String cleaned = ROUTE_TRAILING.matcher(value).replaceFirst("");
+        cleaned = cleaned.replaceAll("[\\s\\-]+$", "");
+        cleaned = cleaned.replaceAll("^[\\s\\-]+", "");
+        return cleaned.replaceAll("[\\.,;:!\\?]+$", "").trim();
     }
 
     private DateRange dates(String low) {
