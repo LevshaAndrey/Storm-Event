@@ -1,0 +1,4980 @@
+{
+  "stations": [
+    {
+      "code": "130007",
+      "name": "Брест-Центральный",
+      "paragraphs": "П 1,3,4"
+    },
+    {
+      "code": "130100",
+      "name": "Брест-Северный",
+      "paragraphs": "Б К1,1,3,4,8,8н,9,10,10н"
+    },
+    {
+      "code": "130204",
+      "name": "Брест-Восточный",
+      "paragraphs": "О 3,8н,10н"
+    },
+    {
+      "code": "130219",
+      "name": "Харитоны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130223",
+      "name": "Нагораны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130238",
+      "name": "Сахарный Завод",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130242",
+      "name": "Кошелево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130308",
+      "name": "Брест-Полесский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130312",
+      "name": "Юго-Запад",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130346",
+      "name": "Митьки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130350",
+      "name": "Прилуки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130365",
+      "name": "Страдичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130375",
+      "name": "Кодень",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130384",
+      "name": "Знаменка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130399",
+      "name": "Верасы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130401",
+      "name": "Мотыкалы",
+      "paragraphs": "О 1"
+    },
+    {
+      "code": "130416",
+      "name": "Заказанка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130505",
+      "name": "Брест-Северный (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "130609",
+      "name": "Брест-Центральный (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "130810",
+      "name": "Поселок-Мухавец",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130825",
+      "name": "Березовая Роща",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130837",
+      "name": "Брест-Южный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "130914",
+      "name": "Каменная",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "131009",
+      "name": "Бернады",
+      "paragraphs": "3"
+    },
+    {
+      "code": "131207",
+      "name": "Жабинка",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "131211",
+      "name": "Матеевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131226",
+      "name": "Яковчицы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131230",
+      "name": "Столпы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131245",
+      "name": "Тевли",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131251",
+      "name": "Лясы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131264",
+      "name": "Прилутчина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131283",
+      "name": "Батча",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131298",
+      "name": "Бобры",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131300",
+      "name": "Жабинка (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "131705",
+      "name": "Высоко-Литовск",
+      "paragraphs": "Б 3,8н,10н,11н,12н"
+    },
+    {
+      "code": "131713",
+      "name": "Высокое-Город",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131724",
+      "name": "Верба",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131739",
+      "name": "Люта",
+      "paragraphs": "О"
+    },
+    {
+      "code": "131809",
+      "name": "Высоко-Литовск (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "132002",
+      "name": "Хотислав",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "132106",
+      "name": "Хотислав (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "132204",
+      "name": "Лыщицы",
+      "paragraphs": "Б 3,8н,10н,11н,12н"
+    },
+    {
+      "code": "132214",
+      "name": "Щитники",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132229",
+      "name": "Дачное",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132233",
+      "name": "Мотыкалы Большие",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132248",
+      "name": "Прибужье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132252",
+      "name": "Скоки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132267",
+      "name": "Западное",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132303",
+      "name": "Дубица",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "132318",
+      "name": "Збунин",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132322",
+      "name": "Леплевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132337",
+      "name": "Домачево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132341",
+      "name": "Липенки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132356",
+      "name": "Харсы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132360",
+      "name": "Приборово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132375",
+      "name": "Селяхи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132380",
+      "name": "Комаровка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132394",
+      "name": "Кобелка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132407",
+      "name": "Влодава",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "132500",
+      "name": "Закрутин",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "132515",
+      "name": "Роматово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132523",
+      "name": "Пожежин",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132534",
+      "name": "Боровая",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132549",
+      "name": "Дубок",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132553",
+      "name": "Жемчужина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132604",
+      "name": "Малорита",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "132619",
+      "name": "Мельники",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132708",
+      "name": "Кобрин",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "132712",
+      "name": "Камень",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132727",
+      "name": "Черевачицы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132801",
+      "name": "Городец",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "132816",
+      "name": "Антополь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132820",
+      "name": "Вулька-Антопольская",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132835",
+      "name": "Пигановичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132842",
+      "name": "Липово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132905",
+      "name": "Дрогичин",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "132919",
+      "name": "Дрогичин-Город",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132924",
+      "name": "Липники",
+      "paragraphs": "О"
+    },
+    {
+      "code": "132939",
+      "name": "Орловичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133005",
+      "name": "Трудовая",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "133014",
+      "name": "Огдемер",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133024",
+      "name": "Снитово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133109",
+      "name": "Янов-Полесский",
+      "paragraphs": "Б 1,3,8н,10н"
+    },
+    {
+      "code": "133113",
+      "name": "Юхновичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133128",
+      "name": "Понятичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133132",
+      "name": "Молотковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133147",
+      "name": "Бродница",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133202",
+      "name": "Пинск",
+      "paragraphs": "Б К1,1,3,8,8н,9,10,10н"
+    },
+    {
+      "code": "133310",
+      "name": "Аленушка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133325",
+      "name": "Ясельда",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "133400",
+      "name": "Парохонск",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "133414",
+      "name": "Озерная",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133429",
+      "name": "Лобча",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133433",
+      "name": "Ловча",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "133448",
+      "name": "Хвоецкое",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133452",
+      "name": "Вулька-Лунинецкая",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133467",
+      "name": "Вылазы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133471",
+      "name": "Дубновичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133607",
+      "name": "Оранчицы",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "133611",
+      "name": "Ткачи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133626",
+      "name": "Павловичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133700",
+      "name": "Береза Картузская",
+      "paragraphs": "Б 1,3,8н,10н"
+    },
+    {
+      "code": "133729",
+      "name": "Кабаки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "133804",
+      "name": "Белоозерск",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "134008",
+      "name": "Бронная Гора",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "134101",
+      "name": "Коссово-Полесское",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "134116",
+      "name": "Береза Город",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134205",
+      "name": "Ивацевичи",
+      "paragraphs": "Б 1,3,4,8н,10н"
+    },
+    {
+      "code": "134224",
+      "name": "Борки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134239",
+      "name": "Речица",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134243",
+      "name": "Войтешин",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134309",
+      "name": "Доманово",
+      "paragraphs": "Б 1,3,8н,10н"
+    },
+    {
+      "code": "134313",
+      "name": "Бытень",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134328",
+      "name": "Лесная-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "134402",
+      "name": "Лесная",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "134506",
+      "name": "Грицевец",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "134703",
+      "name": "Лососно",
+      "paragraphs": "О 1,3,8н,10н"
+    },
+    {
+      "code": "134807",
+      "name": "Брузги (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "134915",
+      "name": "Пересельцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134924",
+      "name": "Лосево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134934",
+      "name": "Чернуха",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134949",
+      "name": "Лихачи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134953",
+      "name": "Салатье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134968",
+      "name": "Узбережь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "134972",
+      "name": "Поречье",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "134987",
+      "name": "Учитель",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135104",
+      "name": "Брузги",
+      "paragraphs": "О 1,3,11,12"
+    },
+    {
+      "code": "135208",
+      "name": "Гродно",
+      "paragraphs": "П 1,3"
+    },
+    {
+      "code": "135212",
+      "name": "Каплица",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135227",
+      "name": "Богушевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135231",
+      "name": "Рыбница",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135246",
+      "name": "Клочки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135250",
+      "name": "Бокуны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135265",
+      "name": "Немейщизна",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135272",
+      "name": "Коробчицы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135284",
+      "name": "Гибуличи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135299",
+      "name": "Пригородный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135301",
+      "name": "Аульс",
+      "paragraphs": "О 1,3,4,8"
+    },
+    {
+      "code": "135316",
+      "name": "Мурованка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135320",
+      "name": "Завадичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135335",
+      "name": "Житомля",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135349",
+      "name": "Бирюличи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135354",
+      "name": "Полесский Парк",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135405",
+      "name": "Скидель",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "135415",
+      "name": "Хвойняны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135424",
+      "name": "Черлена",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "135439",
+      "name": "Дубно",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135443",
+      "name": "Заполье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135602",
+      "name": "Свислочь",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "135617",
+      "name": "Свислочь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135621",
+      "name": "Саки",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "135636",
+      "name": "Монтовты",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135640",
+      "name": "Нестеровичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "135706",
+      "name": "Свислочь (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "136200",
+      "name": "Берестовица",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "136215",
+      "name": "Жиличи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136225",
+      "name": "Рудавка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136234",
+      "name": "Мстибово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136249",
+      "name": "Андреевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136253",
+      "name": "Голынка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136268",
+      "name": "Лесники",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136605",
+      "name": "Беняконе (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "136709",
+      "name": "Волковыск",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "136713",
+      "name": "Волковыск-Город",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136728",
+      "name": "Старая Весь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136732",
+      "name": "Войтковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136747",
+      "name": "Лебяды",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136751",
+      "name": "Подстанция",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136802",
+      "name": "Зельва",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "136817",
+      "name": "Савичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136821",
+      "name": "Плетяничи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136906",
+      "name": "Озерница",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "136910",
+      "name": "Гриньки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "136930",
+      "name": "Костени",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137006",
+      "name": "Слоним",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "137010",
+      "name": "Фабричный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137035",
+      "name": "Исса",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137059",
+      "name": "Ивная",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137063",
+      "name": "Детковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137101",
+      "name": "Полонка",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "137114",
+      "name": "Севрюки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137129",
+      "name": "Боровцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137148",
+      "name": "Приозерный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137203",
+      "name": "Мосты",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "137218",
+      "name": "Кульшичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137222",
+      "name": "Даниловцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137237",
+      "name": "Старина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137241",
+      "name": "Турья",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137256",
+      "name": "Бобры",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137307",
+      "name": "Рось",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "137400",
+      "name": "Рожанка",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "137415",
+      "name": "Желудок",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137420",
+      "name": "Логвины",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137434",
+      "name": "Микелевщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137504",
+      "name": "Скрибовцы",
+      "paragraphs": "О 1"
+    },
+    {
+      "code": "137519",
+      "name": "Семашки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137523",
+      "name": "Курган",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137538",
+      "name": "Поречаны",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "137542",
+      "name": "Белогруда",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137557",
+      "name": "Далекий",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137561",
+      "name": "Халечино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137608",
+      "name": "Лида",
+      "paragraphs": "Б 1,3,8,10"
+    },
+    {
+      "code": "137612",
+      "name": "Минойты",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137627",
+      "name": "Гончары",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137631",
+      "name": "Дитва",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137646",
+      "name": "Раклевцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137650",
+      "name": "Дитрики",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137701",
+      "name": "Гуды",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "137716",
+      "name": "Петюны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137805",
+      "name": "Бастуны",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "137816",
+      "name": "Вороново",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137909",
+      "name": "Беняконе",
+      "paragraphs": "О"
+    },
+    {
+      "code": "137913",
+      "name": "Еткишки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138009",
+      "name": "Гутно",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "138013",
+      "name": "Кирьяновцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138117",
+      "name": "Яцуки",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "138121",
+      "name": "Неман",
+      "paragraphs": "П"
+    },
+    {
+      "code": "138206",
+      "name": "Новоельня",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "138210",
+      "name": "Дворец",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138225",
+      "name": "Выгода",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "138230",
+      "name": "Хорошки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138244",
+      "name": "Молчадь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138259",
+      "name": "Клишевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138314",
+      "name": "Мицкевичи",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "138403",
+      "name": "Мордичи",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "138418",
+      "name": "Замошье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138422",
+      "name": "Домашевичи (рзд)",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "138437",
+      "name": "Барановичи-Северные",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "138441",
+      "name": "Козлякевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138456",
+      "name": "Железница",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138507",
+      "name": "Барановичи-Центральные",
+      "paragraphs": "Б 1,3,4,8,10"
+    },
+    {
+      "code": "138511",
+      "name": "Ольсевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138526",
+      "name": "Пост    1",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138530",
+      "name": "Крошин",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138545",
+      "name": "Юшкевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138550",
+      "name": "Погорельцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138564",
+      "name": "Хвоево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138579",
+      "name": "Липа",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138583",
+      "name": "Пост №   1",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "138600",
+      "name": "Городея",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "138615",
+      "name": "Осиповщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138626",
+      "name": "Синяво",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138634",
+      "name": "Воротище",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138704",
+      "name": "Столбцы",
+      "paragraphs": "Б 1,3,8н"
+    },
+    {
+      "code": "138719",
+      "name": "Кучкуны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138723",
+      "name": "Отцеда",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138738",
+      "name": "Колосово",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "138742",
+      "name": "Темные Ляды",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138808",
+      "name": "Горынь (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "138812",
+      "name": "Мезиновка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138901",
+      "name": "Барановичи-Полесские",
+      "paragraphs": "П 1,3"
+    },
+    {
+      "code": "138916",
+      "name": "Русино",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "138920",
+      "name": "Федюки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138935",
+      "name": "Ковали",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "138945",
+      "name": "Подлесье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138954",
+      "name": "Жеребковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138969",
+      "name": "Щепичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "138973",
+      "name": "Локомотивное Депо",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139001",
+      "name": "Клецк",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "139016",
+      "name": "Зубки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139020",
+      "name": "Дегтяны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139105",
+      "name": "Тимковичи",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "139124",
+      "name": "Шаловичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139139",
+      "name": "Середняки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139143",
+      "name": "Ванилевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139158",
+      "name": "Труд",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139162",
+      "name": "Восток",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139209",
+      "name": "Горынь",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "139213",
+      "name": "Горынь-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "139228",
+      "name": "Бухличи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139302",
+      "name": "Видибор",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "139321",
+      "name": "Журавинка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139406",
+      "name": "Лунинец",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "139410",
+      "name": "Яжевки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139425",
+      "name": "Любожердье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139436",
+      "name": "Ракитно",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139444",
+      "name": "Дребск",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139459",
+      "name": "Сад",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139463",
+      "name": "Дятловичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139478",
+      "name": "Бостынь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139502",
+      "name": "Люща",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "139514",
+      "name": "Мальковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139529",
+      "name": "Якуба Коласа",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139533",
+      "name": "Люсино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139548",
+      "name": "Рассвет",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139552",
+      "name": "Молодежный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139603",
+      "name": "Ганцевичи",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "139618",
+      "name": "Буды",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139622",
+      "name": "Кулени",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139637",
+      "name": "Романовщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139641",
+      "name": "Любашево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139707",
+      "name": "Лунинец-Стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "139711",
+      "name": "Припять (рзд.)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139800",
+      "name": "Рейтанов",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "139904",
+      "name": "Ляховичи",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "139919",
+      "name": "Щара",
+      "paragraphs": "О"
+    },
+    {
+      "code": "139923",
+      "name": "Петуховщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "140009",
+      "name": "Минск-Сортировочный",
+      "paragraphs": "1,3"
+    },
+    {
+      "code": "140013",
+      "name": "Институт Культуры",
+      "paragraphs": "О"
+    },
+    {
+      "code": "140032",
+      "name": "Столичный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "140102",
+      "name": "Минск-Северный",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "140210",
+      "name": "Минск-Пассажирский",
+      "paragraphs": "П"
+    },
+    {
+      "code": "140304",
+      "name": "Минск-Восточный",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "140314",
+      "name": "Тракторный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "140403",
+      "name": "Степянка",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "140507",
+      "name": "Минск-Южный",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "140511",
+      "name": "Лошица",
+      "paragraphs": "О"
+    },
+    {
+      "code": "140526",
+      "name": "Железнодорожный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "140704",
+      "name": "Озерище",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "140808",
+      "name": "Колодищи",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "140812",
+      "name": "Садовый",
+      "paragraphs": "О"
+    },
+    {
+      "code": "140901",
+      "name": "Городище",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "140916",
+      "name": "Слобода",
+      "paragraphs": "О"
+    },
+    {
+      "code": "140920",
+      "name": "Загорье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "140935",
+      "name": "Домашаны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141001",
+      "name": "Смолевичи",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "141105",
+      "name": "Шеметово",
+      "paragraphs": "3"
+    },
+    {
+      "code": "141124",
+      "name": "Национальный аэропорт \"Минск\"",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "141209",
+      "name": "Красное-Знамя",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "141213",
+      "name": "Жодино-Южное",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141228",
+      "name": "Заречное",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141302",
+      "name": "Жодино",
+      "paragraphs": "Б 1,3,4,8н,10н"
+    },
+    {
+      "code": "141317",
+      "name": "Пролетарская Победа",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "141321",
+      "name": "Печинский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141336",
+      "name": "Барсуки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141406",
+      "name": "Борисов",
+      "paragraphs": "Б 1,3,4,8,9"
+    },
+    {
+      "code": "141410",
+      "name": "Березина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141500",
+      "name": "Новосады",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "141514",
+      "name": "Замужанье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141529",
+      "name": "Неманица",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141603",
+      "name": "Приямино",
+      "paragraphs": "О 1,3,4"
+    },
+    {
+      "code": "141618",
+      "name": "Бережок",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141707",
+      "name": "Крупки",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "141711",
+      "name": "Новая Жизнь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141800",
+      "name": "Бобр",
+      "paragraphs": "О 1,3,4"
+    },
+    {
+      "code": "141815",
+      "name": "Красновка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141919",
+      "name": "Троцилово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141923",
+      "name": "Красная Горка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141938",
+      "name": "Славное",
+      "paragraphs": "О"
+    },
+    {
+      "code": "141942",
+      "name": "Нарцизово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142004",
+      "name": "Толочин",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "142019",
+      "name": "Выдерщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142023",
+      "name": "Перевалочный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142038",
+      "name": "Мартюхово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142108",
+      "name": "Коханово",
+      "paragraphs": "О 1,3,4"
+    },
+    {
+      "code": "142112",
+      "name": "Голошевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142127",
+      "name": "Дятлово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142131",
+      "name": "Солнечный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142146",
+      "name": "Ломачино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142165",
+      "name": "Хороброво",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142177",
+      "name": "Веровойша",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142305",
+      "name": "Уша",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "142310",
+      "name": "Лоси",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142324",
+      "name": "Бояры",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142339",
+      "name": "Мясота",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142343",
+      "name": "Татарщизна",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142358",
+      "name": "Селивоновка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142362",
+      "name": "Криница",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142377",
+      "name": "Фестивальный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "142409",
+      "name": "Олехновичи",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "142413",
+      "name": "Романы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143401",
+      "name": "Дубравы",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "143416",
+      "name": "Вязынка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143420",
+      "name": "Пралески",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143505",
+      "name": "Радошковичи",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "143515",
+      "name": "Хмелевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143524",
+      "name": "Анусино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143609",
+      "name": "Беларусь",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "143613",
+      "name": "Зеленое",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143628",
+      "name": "Крыжовка (пп)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143632",
+      "name": "Ратомка",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "143647",
+      "name": "Минское Море",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143651",
+      "name": "Ждановичи",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "143666",
+      "name": "Масюковщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143685",
+      "name": "Лебяжий",
+      "paragraphs": "О"
+    },
+    {
+      "code": "143702",
+      "name": "Дегтяревка",
+      "paragraphs": "3"
+    },
+    {
+      "code": "143717",
+      "name": "Богатырёво",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "144014",
+      "name": "Негорелое-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "144404",
+      "name": "Негорелое",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "144419",
+      "name": "Энергетик",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144423",
+      "name": "Клыповщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144438",
+      "name": "Асино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144442",
+      "name": "Дзержинск",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144508",
+      "name": "Койданово",
+      "paragraphs": "Б 1,3,4,8н,10н"
+    },
+    {
+      "code": "144512",
+      "name": "Станьково",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144527",
+      "name": "Бережа",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144531",
+      "name": "Пятигорье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144601",
+      "name": "Фаниполь",
+      "paragraphs": "Б 1,3,4,8н,10н"
+    },
+    {
+      "code": "144616",
+      "name": "Волчковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144635",
+      "name": "Помыслище",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "144644",
+      "name": "Роща",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144654",
+      "name": "Курасовщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144669",
+      "name": "Птичь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144809",
+      "name": "Колядичи",
+      "paragraphs": "Б К1,1,3,4,8,9,10,11,11н,12,12н"
+    },
+    {
+      "code": "144813",
+      "name": "Мачулищи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144828",
+      "name": "Асеевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "144832",
+      "name": "Асеевка (пп)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145002",
+      "name": "Михановичи",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "145017",
+      "name": "Седча",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145021",
+      "name": "Рыбцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145036",
+      "name": "Равнополье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145040",
+      "name": "Зазерка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145106",
+      "name": "Гатово",
+      "paragraphs": "3"
+    },
+    {
+      "code": "145201",
+      "name": "Шабаны",
+      "paragraphs": "3,8н,10н,11н,12н"
+    },
+    {
+      "code": "145303",
+      "name": "Руденск",
+      "paragraphs": "Б 3,8н"
+    },
+    {
+      "code": "145318",
+      "name": "Новое Село",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145322",
+      "name": "Дричин",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145337",
+      "name": "Вендеж",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145341",
+      "name": "Техникум",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145407",
+      "name": "Пуховичи",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "145411",
+      "name": "Веленский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145426",
+      "name": "Блужа",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145430",
+      "name": "Майский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145445",
+      "name": "Веселовский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "145454",
+      "name": "Талька",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "146011",
+      "name": "Верхи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146096",
+      "name": "Верейцы-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "146109",
+      "name": "Верейцы",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "146113",
+      "name": "Цель",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146128",
+      "name": "Осово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146132",
+      "name": "Гомоновка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146217",
+      "name": "Погорелое",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146221",
+      "name": "Лапичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146236",
+      "name": "Уборок",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146306",
+      "name": "Гродзянка",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "146407",
+      "name": "Осиповичи I",
+      "paragraphs": "Б 1,3,4,8н,9"
+    },
+    {
+      "code": "146414",
+      "name": "Осиповичи II",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146429",
+      "name": "Брицаловичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146433",
+      "name": "Осиповичи III",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146448",
+      "name": "Советский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146452",
+      "name": "Бродище",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146467",
+      "name": "Юбилейный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146471",
+      "name": "Горожа",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146700",
+      "name": "РЕЗЕРВНАЯ СТАНЦИЯ",
+      "paragraphs": ""
+    },
+    {
+      "code": "146715",
+      "name": "Татарка",
+      "paragraphs": "П"
+    },
+    {
+      "code": "146734",
+      "name": "Дачная",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146819",
+      "name": "Токари",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146823",
+      "name": "Бибковщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146838",
+      "name": "Кветка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146842",
+      "name": "Гай",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146857",
+      "name": "Ясень",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146912",
+      "name": "Киселевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "146927",
+      "name": "Мирадино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147008",
+      "name": "Бобруйск",
+      "paragraphs": "Б 1,3,8н"
+    },
+    {
+      "code": "147027",
+      "name": "Дедново",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147205",
+      "name": "Рабкор",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "147217",
+      "name": "Октябрьский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147224",
+      "name": "Новая Дуброва",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147313",
+      "name": "Оземля",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147328",
+      "name": "Бумажково",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147402",
+      "name": "Ратмировичи",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "147417",
+      "name": "Заозерщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147421",
+      "name": "Черные Броды",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147436",
+      "name": "Мошны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147440",
+      "name": "Орсичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147493",
+      "name": "Брожа",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147510",
+      "name": "Глебова Рудня",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147602",
+      "name": "Красный Брод",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "147614",
+      "name": "Туголица",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147703",
+      "name": "Березина",
+      "paragraphs": "Б 1,3,4,8"
+    },
+    {
+      "code": "147718",
+      "name": "Бабино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147722",
+      "name": "Савичи",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "147737",
+      "name": "Малинники",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147741",
+      "name": "Ост. Пункт  331 км",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147807",
+      "name": "Телуша",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "147811",
+      "name": "Микуличи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147826",
+      "name": "Омельня",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147830",
+      "name": "Данилов Мост",
+      "paragraphs": "О"
+    },
+    {
+      "code": "147845",
+      "name": "Красный Берег-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "148000",
+      "name": "Красный Берег",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "148015",
+      "name": "Казимирово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148027",
+      "name": "Малевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148208",
+      "name": "Калий I",
+      "paragraphs": "О 1,3,7,8н,10н"
+    },
+    {
+      "code": "148212",
+      "name": "Строитель",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148227",
+      "name": "Солигорск",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "148231",
+      "name": "Шахтерский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148301",
+      "name": "Калий III",
+      "paragraphs": "О 3,8н,10н"
+    },
+    {
+      "code": "148316",
+      "name": "Глядки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148320",
+      "name": "Новогорки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148509",
+      "name": "Калий IV",
+      "paragraphs": "О 3,8н,10н"
+    },
+    {
+      "code": "148602",
+      "name": "Слуцк",
+      "paragraphs": "Б 1,3,4,8"
+    },
+    {
+      "code": "148617",
+      "name": "Новодворцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148621",
+      "name": "Некраши",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "148636",
+      "name": "Загродье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148640",
+      "name": "Повстынь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148655",
+      "name": "Безверховичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148665",
+      "name": "Козловичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "148706",
+      "name": "Слуцк-Стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "149003",
+      "name": "Уречье",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "149018",
+      "name": "Оточка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "149022",
+      "name": "Верхутино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "149037",
+      "name": "Пасека",
+      "paragraphs": "О"
+    },
+    {
+      "code": "149107",
+      "name": "Старые Дороги",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "149111",
+      "name": "Александровка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "149126",
+      "name": "Фаличи",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "149130",
+      "name": "Ульяновка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "149215",
+      "name": "Гряда",
+      "paragraphs": "О"
+    },
+    {
+      "code": "149222",
+      "name": "Деревцы",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "149234",
+      "name": "Дараганово",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "150000",
+      "name": "Гомель",
+      "paragraphs": "П 3"
+    },
+    {
+      "code": "150015",
+      "name": "Еремино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150024",
+      "name": "Светоч",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150034",
+      "name": "Гомель-Нечетный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150049",
+      "name": "Мильча",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150119",
+      "name": "Гомель-Четный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150123",
+      "name": "Никольский Переезд",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150138",
+      "name": "Гомель-Северный",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "150208",
+      "name": "Новобелицкая",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "150212",
+      "name": "Березки (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150227",
+      "name": "Ларищево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150231",
+      "name": "Дударево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150246",
+      "name": "Лисички",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "150250",
+      "name": "Кореневка (обп)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150265",
+      "name": "Уть (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150277",
+      "name": "Соколка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150284",
+      "name": "Каровышень",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150299",
+      "name": "Ост. Пункт   15 км",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150301",
+      "name": "Терюха",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150316",
+      "name": "Грабовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150320",
+      "name": "Дикаловка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150335",
+      "name": "Кравцовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150343",
+      "name": "Дачный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150354",
+      "name": "Терюха-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "150405",
+      "name": "Закопытье (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "150509",
+      "name": "Добруш",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "150513",
+      "name": "Закопытье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150528",
+      "name": "Закопытье-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "150547",
+      "name": "Волотова",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150551",
+      "name": "Будотень",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150617",
+      "name": "Носовичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150621",
+      "name": "Радуга",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150636",
+      "name": "Борок",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150640",
+      "name": "Иваки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150655",
+      "name": "Прудовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150662",
+      "name": "Журавинка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150674",
+      "name": "Зябровка",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "150706",
+      "name": "Тереховка",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "150710",
+      "name": "Грушевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150725",
+      "name": "Красная Буда",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150739",
+      "name": "Мошок",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150744",
+      "name": "Лукьяновка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150759",
+      "name": "Ленинодар",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150763",
+      "name": "Куток",
+      "paragraphs": "О"
+    },
+    {
+      "code": "150778",
+      "name": "Пут. Пост 151 км",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "150782",
+      "name": "Тереховка-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "150805",
+      "name": "Тереховка (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "150903",
+      "name": "Круговец",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "151003",
+      "name": "Терюха (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "151130",
+      "name": "Словечно",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "151145",
+      "name": "Словечно-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "151200",
+      "name": "Словечно (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "151215",
+      "name": "Забозье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "151220",
+      "name": "Новая Рудня",
+      "paragraphs": "О"
+    },
+    {
+      "code": "151234",
+      "name": "Богутичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "151304",
+      "name": "Ельск",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "151319",
+      "name": "Мытва",
+      "paragraphs": "О"
+    },
+    {
+      "code": "151338",
+      "name": "Михалки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "151342",
+      "name": "Сосновый Бор",
+      "paragraphs": "О"
+    },
+    {
+      "code": "151408",
+      "name": "Барбаров",
+      "paragraphs": "3"
+    },
+    {
+      "code": "151605",
+      "name": "Козенки",
+      "paragraphs": "Б 1,3,8н"
+    },
+    {
+      "code": "151709",
+      "name": "Мозырь",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "151802",
+      "name": "Пхов",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "151910",
+      "name": "Любань",
+      "paragraphs": "О"
+    },
+    {
+      "code": "151925",
+      "name": "Сенкевичи (рзд)",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "151934",
+      "name": "Ситница",
+      "paragraphs": "О"
+    },
+    {
+      "code": "151944",
+      "name": "Лахва",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "152006",
+      "name": "Ситница",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "152106",
+      "name": "Микашевичи",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "152129",
+      "name": "Бронислав",
+      "paragraphs": "О"
+    },
+    {
+      "code": "152148",
+      "name": "Загорбашье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "152152",
+      "name": "Людиневичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "152167",
+      "name": "Дедовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "152171",
+      "name": "Житковичи-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "153301",
+      "name": "Житковичи",
+      "paragraphs": "Б 1,3,4,10,11,12"
+    },
+    {
+      "code": "153314",
+      "name": "Бринево (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153329",
+      "name": "Старушки (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153507",
+      "name": "Копцевичи",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "153511",
+      "name": "Оголичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153526",
+      "name": "Бобрич",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153600",
+      "name": "Муляровка",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "153615",
+      "name": "Коржевка (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153719",
+      "name": "Мышанка",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "153723",
+      "name": "Кацуры",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153738",
+      "name": "Садки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153742",
+      "name": "Клинск (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153757",
+      "name": "Руднянский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153761",
+      "name": "Птичь",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "153776",
+      "name": "Борречье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153808",
+      "name": "Калинковичи",
+      "paragraphs": "Б 1,3,4,8,10,11,12"
+    },
+    {
+      "code": "153812",
+      "name": "Мелькомбинат",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153827",
+      "name": "Дубровичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153831",
+      "name": "Дудичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153846",
+      "name": "Калинковичи-Восточные",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153850",
+      "name": "Голевицы",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "153873",
+      "name": "Лозки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153884",
+      "name": "Нахов",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153899",
+      "name": "Калинковичи-Западные",
+      "paragraphs": "О"
+    },
+    {
+      "code": "153901",
+      "name": "Пхов (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "153916",
+      "name": "Калинковичи-Южные",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154016",
+      "name": "Юшки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154105",
+      "name": "Горочичи",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "154111",
+      "name": "Уболоть",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154124",
+      "name": "Холодники",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "154139",
+      "name": "Плудим",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154143",
+      "name": "Останковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154158",
+      "name": "Узнаж",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154162",
+      "name": "Жердь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154209",
+      "name": "Светлогорск-на-Березине",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "154213",
+      "name": "Сельное",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154228",
+      "name": "Ящицы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154232",
+      "name": "Мормаль",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154247",
+      "name": "Истопки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154251",
+      "name": "Нивы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154266",
+      "name": "Солоное",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154270",
+      "name": "Жлобин-Подольский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154406",
+      "name": "Василевичи",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "154410",
+      "name": "Ведрич",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154425",
+      "name": "Бабичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154430",
+      "name": "Лиски",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "154444",
+      "name": "Кастрычник",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154459",
+      "name": "Демехи",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "154463",
+      "name": "Геолог",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154478",
+      "name": "Ритм",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154507",
+      "name": "Хойники",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "154514",
+      "name": "Осов",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154529",
+      "name": "Авраамовская",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "154533",
+      "name": "Избынь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154548",
+      "name": "Макановичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154552",
+      "name": "Защобье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154711",
+      "name": "Ребуса",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154726",
+      "name": "Антополь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154800",
+      "name": "Речица",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "154815",
+      "name": "Сенозавод",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154826",
+      "name": "Копань",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154834",
+      "name": "Якимовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154849",
+      "name": "Чижовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154868",
+      "name": "Щербовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154872",
+      "name": "Прибор",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "154904",
+      "name": "Центролит",
+      "paragraphs": "Б 1,3,4,8,10,11,12"
+    },
+    {
+      "code": "154919",
+      "name": "Рандовский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "154923",
+      "name": "Сады",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155004",
+      "name": "Жлобин",
+      "paragraphs": "Б 1,3,4,8н,10,11,12"
+    },
+    {
+      "code": "155023",
+      "name": "Деповской",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155038",
+      "name": "Жлобин-Западный (обп)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155042",
+      "name": "Вирский",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "155057",
+      "name": "Калыбовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155061",
+      "name": "Хальч",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "155076",
+      "name": "Старая Рудня",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155080",
+      "name": "Металлург",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155112",
+      "name": "Салтановка",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "155131",
+      "name": "Забабье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155146",
+      "name": "Шарыбовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155150",
+      "name": "Качаново",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155165",
+      "name": "Потаповка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155201",
+      "name": "Буда-Кошелевская",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "155216",
+      "name": "Бушевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155220",
+      "name": "Череток",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155235",
+      "name": "Радеево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155240",
+      "name": "Буслы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155254",
+      "name": "Зеленый Остров",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155273",
+      "name": "Тихиничи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155305",
+      "name": "Уза",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "155317",
+      "name": "Калининский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155409",
+      "name": "Лазурная",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "155502",
+      "name": "Костюковка",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "155714",
+      "name": "Сож",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155733",
+      "name": "Плесы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155748",
+      "name": "Кленки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155767",
+      "name": "Романовичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155771",
+      "name": "Ипуть",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155803",
+      "name": "Сверково",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "155818",
+      "name": "Лукское (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155822",
+      "name": "Жлобин-Северный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155837",
+      "name": "Новые Луки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155856",
+      "name": "Больница",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155907",
+      "name": "Рогачев",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "155911",
+      "name": "Старосельский",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "155926",
+      "name": "Задрутье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "155930",
+      "name": "Рогачев-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "156011",
+      "name": "Лудчицы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156026",
+      "name": "Залесская Слобода",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156030",
+      "name": "Тощица",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "156100",
+      "name": "Быхов",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "156115",
+      "name": "Мокрое",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156127",
+      "name": "Баркалабово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156134",
+      "name": "Барсуки",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "156219",
+      "name": "Текстильщик",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156223",
+      "name": "Металлург",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156238",
+      "name": "Соболевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156242",
+      "name": "Дашковка",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "156308",
+      "name": "Черноземовка",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "156401",
+      "name": "Буйничи",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "156505",
+      "name": "Могилев II",
+      "paragraphs": "О 1,3,4,8,10,11,12"
+    },
+    {
+      "code": "156524",
+      "name": "Полыковские Хутора",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156539",
+      "name": "Волоки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156543",
+      "name": "Лотва",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "156558",
+      "name": "Савелинки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156609",
+      "name": "Могилев I",
+      "paragraphs": "П 1,3"
+    },
+    {
+      "code": "156613",
+      "name": "Могилев III",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "156702",
+      "name": "Рыжковичи",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "156806",
+      "name": "Шклов",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "156810",
+      "name": "Слободка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156825",
+      "name": "Аполлоновка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156831",
+      "name": "Низовцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156908",
+      "name": "Копысь",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "156914",
+      "name": "Прокшино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "156929",
+      "name": "Александрия",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157003",
+      "name": "Елизово",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "157014",
+      "name": "Тачанка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157029",
+      "name": "Ольховка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157103",
+      "name": "Несета",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "157118",
+      "name": "Стоялово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157122",
+      "name": "Суша",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157207",
+      "name": "Воничи",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "157211",
+      "name": "Развадово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157226",
+      "name": "Милое",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157245",
+      "name": "Заличинка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157300",
+      "name": "Друть",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "157315",
+      "name": "Синюга",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157322",
+      "name": "Семуковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157334",
+      "name": "Новая Нива",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157349",
+      "name": "Хоново",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157419",
+      "name": "Понизов",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157423",
+      "name": "Вендриж",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "157508",
+      "name": "Голынец",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "157512",
+      "name": "Тишовка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157527",
+      "name": "Городщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157705",
+      "name": "Луполово",
+      "paragraphs": "Б 1,3,8н,10н,11н,12н"
+    },
+    {
+      "code": "157718",
+      "name": "Дары",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157724",
+      "name": "Антоновка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157739",
+      "name": "Боровка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157743",
+      "name": "Рудея",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157758",
+      "name": "Щежер",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157809",
+      "name": "Заднепровская",
+      "paragraphs": "1,3,8н,10н"
+    },
+    {
+      "code": "157885",
+      "name": "Реста",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "157917",
+      "name": "Самулки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "157921",
+      "name": "Благовичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158002",
+      "name": "Чаусы",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "158017",
+      "name": "Дрануха",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158021",
+      "name": "Переможник",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158106",
+      "name": "Веремейки",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "158110",
+      "name": "Осовец",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "158125",
+      "name": "Юрковка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158132",
+      "name": "Дарливое",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158144",
+      "name": "Депо",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158209",
+      "name": "Кричев I",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "158233",
+      "name": "Бель",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158248",
+      "name": "Малятичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158252",
+      "name": "Воловники",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158267",
+      "name": "Черная Натопа",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158303",
+      "name": "Ходосы",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "158318",
+      "name": "Пячковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158322",
+      "name": "Красноручье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158337",
+      "name": "Кошь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158407",
+      "name": "Темный Лес",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "158411",
+      "name": "Никольск",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158426",
+      "name": "Кледневичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158430",
+      "name": "Пичевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158445",
+      "name": "Ремество",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158500",
+      "name": "Погодино",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "158515",
+      "name": "Ректа",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158528",
+      "name": "Паршино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158534",
+      "name": "Зубры",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158604",
+      "name": "Шестеровка (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "158619",
+      "name": "Ермоловка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158623",
+      "name": "Сидоровка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158708",
+      "name": "Румино",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "158816",
+      "name": "Звезда",
+      "paragraphs": "О"
+    },
+    {
+      "code": "158905",
+      "name": "Шестеровка",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "159005",
+      "name": "Белынковичи",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "159019",
+      "name": "Журбин",
+      "paragraphs": "О"
+    },
+    {
+      "code": "159039",
+      "name": "Новолиповский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "159043",
+      "name": "Бони",
+      "paragraphs": "О"
+    },
+    {
+      "code": "159109",
+      "name": "Коммунары",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "159113",
+      "name": "Волосковня",
+      "paragraphs": "О"
+    },
+    {
+      "code": "159128",
+      "name": "Осмоловичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "159202",
+      "name": "Климовичи",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "159306",
+      "name": "Белынковичи (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "159404",
+      "name": "Предзаводская",
+      "paragraphs": "3"
+    },
+    {
+      "code": "159503",
+      "name": "Михеевичи",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "160002",
+      "name": "Витебск",
+      "paragraphs": "П 1,3,4,8,9,10"
+    },
+    {
+      "code": "160017",
+      "name": "Гришаны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160021",
+      "name": "Княжица (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160036",
+      "name": "Летцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160040",
+      "name": "Старое Село",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "160055",
+      "name": "Язвино (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160063",
+      "name": "Ужлятино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160303",
+      "name": "Чепино",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "160322",
+      "name": "Лосвида",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "160337",
+      "name": "Залучье (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160341",
+      "name": "Батали",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160356",
+      "name": "Должа",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160407",
+      "name": "Лужесно",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "160604",
+      "name": "Городок",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "160708",
+      "name": "Прудок",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "160712",
+      "name": "Росляки (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160731",
+      "name": "Грибачи (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160746",
+      "name": "Меховое",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160801",
+      "name": "Езерище",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "160816",
+      "name": "Езерище-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "160905",
+      "name": "Шумилино",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "160910",
+      "name": "Ловша",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "160924",
+      "name": "Пуща",
+      "paragraphs": "О"
+    },
+    {
+      "code": "160939",
+      "name": "Добрино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161005",
+      "name": "Езерище (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "161109",
+      "name": "Оболь",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "161113",
+      "name": "Глушанино (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161128",
+      "name": "Горяны",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "161202",
+      "name": "Алеща (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "161217",
+      "name": "Секеровщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161221",
+      "name": "Сосница",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "161236",
+      "name": "Полоцк парк Громы",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "161240",
+      "name": "Поздняково",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "161255",
+      "name": "Полота (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161269",
+      "name": "Юровичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161306",
+      "name": "Полоцк",
+      "paragraphs": "Б 1,3,4,8,9"
+    },
+    {
+      "code": "161310",
+      "name": "Мариненко",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161401",
+      "name": "Бигосово (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "161518",
+      "name": "Дретунь",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161607",
+      "name": "Алеща (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161698",
+      "name": "Бигосово-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "161700",
+      "name": "Бигосово",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "161804",
+      "name": "Верхнедвинск",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "161819",
+      "name": "Свольно (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161823",
+      "name": "Бениславского",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161838",
+      "name": "Сарьянка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "161908",
+      "name": "Борковичи",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "161912",
+      "name": "Подозерцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162012",
+      "name": "Адамово (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162116",
+      "name": "Баравуха",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "162211",
+      "name": "Ропнянская",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "162309",
+      "name": "Гавья",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "162313",
+      "name": "Березовцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162328",
+      "name": "Лобачи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162332",
+      "name": "Князюковцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162347",
+      "name": "Цверма",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162351",
+      "name": "Литва",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162402",
+      "name": "Юратишки",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "162417",
+      "name": "Довгердишки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162421",
+      "name": "Яхимовщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162436",
+      "name": "Войгяны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162440",
+      "name": "Богданов-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "162506",
+      "name": "Богданов",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "162510",
+      "name": "Мельковщизна",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162525",
+      "name": "Ластоянцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162530",
+      "name": "Листопады",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162607",
+      "name": "Воложин",
+      "paragraphs": "Б 1,4"
+    },
+    {
+      "code": "162614",
+      "name": "Шипуличи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162633",
+      "name": "Березинское",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162703",
+      "name": "Полочаны",
+      "paragraphs": "О 1,3,4"
+    },
+    {
+      "code": "162718",
+      "name": "Сечки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162807",
+      "name": "Каледино",
+      "paragraphs": "О 3,8н,10н"
+    },
+    {
+      "code": "162900",
+      "name": "Молодечно",
+      "paragraphs": "Б 1,3,4,8,9"
+    },
+    {
+      "code": "162915",
+      "name": "Тышкевичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162926",
+      "name": "Домановский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162934",
+      "name": "Красный Бережок",
+      "paragraphs": "О"
+    },
+    {
+      "code": "162949",
+      "name": "Зенит",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163000",
+      "name": "Гудогай",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "163015",
+      "name": "Скрестины",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163021",
+      "name": "Каменка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163034",
+      "name": "Гудогай-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "163104",
+      "name": "Ошмяны",
+      "paragraphs": "О 1,3,4"
+    },
+    {
+      "code": "163208",
+      "name": "Солы",
+      "paragraphs": "О 1,3,4"
+    },
+    {
+      "code": "163212",
+      "name": "Гаути",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163301",
+      "name": "Сморгонь",
+      "paragraphs": "Б 1,3,4,8н,10н"
+    },
+    {
+      "code": "163316",
+      "name": "Белосельский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163320",
+      "name": "Молодежный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163405",
+      "name": "Залесье",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "163417",
+      "name": "Засковичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163509",
+      "name": "Пруды",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "163513",
+      "name": "Мороськи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163528",
+      "name": "Асановский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163532",
+      "name": "Насилово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163602",
+      "name": "Вилейка",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "163617",
+      "name": "Куренец (пп)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163621",
+      "name": "Страж",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163636",
+      "name": "Нивки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163706",
+      "name": "Княгинин",
+      "paragraphs": "О 1,3,4"
+    },
+    {
+      "code": "163710",
+      "name": "Кривичи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163814",
+      "name": "Вереньки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163829",
+      "name": "Илово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163833",
+      "name": "Будслав",
+      "paragraphs": "О"
+    },
+    {
+      "code": "163890",
+      "name": "Парафьянов-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "163903",
+      "name": "Парафьянов",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "163918",
+      "name": "Порплище",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "163922",
+      "name": "Володьки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164003",
+      "name": "Крулевщизна",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "164018",
+      "name": "Шипы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164107",
+      "name": "Гудогай (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "164200",
+      "name": "Бобровники",
+      "paragraphs": "3"
+    },
+    {
+      "code": "164215",
+      "name": "Ярево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164249",
+      "name": "Камайка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164253",
+      "name": "Разлоги",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164304",
+      "name": "Поставы",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "164323",
+      "name": "Новоселки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164338",
+      "name": "Жефарово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164342",
+      "name": "Годутишки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164408",
+      "name": "Воропаево",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "164412",
+      "name": "Ляховщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164427",
+      "name": "Новодруцк",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164431",
+      "name": "Веретеи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164446",
+      "name": "Чёрное",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164450",
+      "name": "Константинов Двор",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164465",
+      "name": "Шарабаи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164516",
+      "name": "Лынтупы",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "164605",
+      "name": "Друя",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "164612",
+      "name": "Идолты",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164709",
+      "name": "Миоры",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "164802",
+      "name": "Шарковщизна",
+      "paragraphs": "Б 1,3,9"
+    },
+    {
+      "code": "164836",
+      "name": "Гута",
+      "paragraphs": "О"
+    },
+    {
+      "code": "164906",
+      "name": "Глубокое",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "165006",
+      "name": "Подсвилье",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "165025",
+      "name": "Краева",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165037",
+      "name": "Замошье",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165103",
+      "name": "Боровое",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "165114",
+      "name": "Зябки",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "165129",
+      "name": "Полеваче",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165133",
+      "name": "Кульгаи (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165148",
+      "name": "Загатье",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "165152",
+      "name": "Ветрино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165203",
+      "name": "Фариново",
+      "paragraphs": "Б 1,3"
+    },
+    {
+      "code": "165307",
+      "name": "Ксты",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "165311",
+      "name": "Фомино (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165504",
+      "name": "Новополоцк",
+      "paragraphs": "3"
+    },
+    {
+      "code": "165608",
+      "name": "Заольша",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "165612",
+      "name": "Черницы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165627",
+      "name": "Заольша-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "165701",
+      "name": "Лиозно",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "165716",
+      "name": "Шахи",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165720",
+      "name": "Выдрея",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165735",
+      "name": "Крынки",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "165741",
+      "name": "Копты",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165754",
+      "name": "Заболотинка (рзд)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "165769",
+      "name": "Лучеса",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "165805",
+      "name": "Заольша (эксп.)",
+      "paragraphs": ""
+    },
+    {
+      "code": "165909",
+      "name": "Придвинская",
+      "paragraphs": "3"
+    },
+    {
+      "code": "166009",
+      "name": "Витьба",
+      "paragraphs": "3"
+    },
+    {
+      "code": "166102",
+      "name": "Журжево",
+      "paragraphs": "3"
+    },
+    {
+      "code": "166210",
+      "name": "Бычиха",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "166403",
+      "name": "Орша-Центральная",
+      "paragraphs": "П 3"
+    },
+    {
+      "code": "166418",
+      "name": "Городнянский (пп)",
+      "paragraphs": "О"
+    },
+    {
+      "code": "166422",
+      "name": "Хлусово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "166507",
+      "name": "Орша-Западная",
+      "paragraphs": "3"
+    },
+    {
+      "code": "166600",
+      "name": "Червено",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "166615",
+      "name": "Звездный",
+      "paragraphs": "О"
+    },
+    {
+      "code": "166628",
+      "name": "Червено-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "166704",
+      "name": "Орша-Восточная",
+      "paragraphs": "О 1,3,4,8,9,10"
+    },
+    {
+      "code": "166719",
+      "name": "Орша-Западная-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "166723",
+      "name": "Можеевка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "166738",
+      "name": "Юрцево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "166742",
+      "name": "Можеевка-стык",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "166761",
+      "name": "Стайки",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "166776",
+      "name": "Лужки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "166808",
+      "name": "Орша-Северная",
+      "paragraphs": "3"
+    },
+    {
+      "code": "167001",
+      "name": "Богушевская",
+      "paragraphs": "Б 1,3,4"
+    },
+    {
+      "code": "167016",
+      "name": "Скребни",
+      "paragraphs": "О"
+    },
+    {
+      "code": "167020",
+      "name": "Савченки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "167035",
+      "name": "Лычковского",
+      "paragraphs": "О"
+    },
+    {
+      "code": "167054",
+      "name": "Замосточье",
+      "paragraphs": "Б"
+    },
+    {
+      "code": "167073",
+      "name": "Сосновка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "167105",
+      "name": "Медведка",
+      "paragraphs": "О 3"
+    },
+    {
+      "code": "167119",
+      "name": "Крестьянка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168108",
+      "name": "Лепель",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "168112",
+      "name": "Лазовики",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168201",
+      "name": "Заслоново",
+      "paragraphs": "Б 1"
+    },
+    {
+      "code": "168216",
+      "name": "Жестянка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168305",
+      "name": "Чашники",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "168314",
+      "name": "Зябы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168324",
+      "name": "Вятны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168339",
+      "name": "Блажевщина",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168343",
+      "name": "Сенненский",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168358",
+      "name": "Уздорники",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168362",
+      "name": "Круглица",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168377",
+      "name": "Менютёво",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168409",
+      "name": "Новолукомль",
+      "paragraphs": "3"
+    },
+    {
+      "code": "168606",
+      "name": "Бурбин",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "168610",
+      "name": "Тимирязево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168625",
+      "name": "Комарово",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168633",
+      "name": "Лемница",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168644",
+      "name": "Шибеки",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168659",
+      "name": "Михново",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168663",
+      "name": "Адровка",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168697",
+      "name": "Смольяны",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168714",
+      "name": "Гребнево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168729",
+      "name": "Криничино",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168733",
+      "name": "Машково",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168748",
+      "name": "Слободской",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168752",
+      "name": "Васьковщизна",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168767",
+      "name": "Ост. Пункт   11 км",
+      "paragraphs": "О"
+    },
+    {
+      "code": "168771",
+      "name": "Пост №2",
+      "paragraphs": "Х"
+    },
+    {
+      "code": "168907",
+      "name": "Хлюстино",
+      "paragraphs": "Б 3"
+    },
+    {
+      "code": "169007",
+      "name": "Осиновка",
+      "paragraphs": "О 1,3"
+    },
+    {
+      "code": "169011",
+      "name": "Киреево",
+      "paragraphs": "О"
+    },
+    {
+      "code": "169026",
+      "name": "Шуховцы",
+      "paragraphs": "О"
+    },
+    {
+      "code": "169100",
+      "name": "Осиновка (эксп.)",
+      "paragraphs": ""
+    }
+  ],
+  "total": 995
+}
