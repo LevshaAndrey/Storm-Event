@@ -6,12 +6,15 @@ import com.event.storm.task.core.command.ChangeDates;
 import com.event.storm.task.core.command.ChangeHotelCriteria;
 import com.event.storm.task.core.command.ChangePassengers;
 import com.event.storm.task.core.command.ChangeSort;
+import com.event.storm.task.core.command.ChangeTransportCriteria;
 import com.event.storm.task.core.command.RefineCommand;
+import com.event.storm.task.core.command.RemoveDomain;
 import com.event.storm.task.core.models.intent.DateRange;
 import com.event.storm.task.core.models.intent.HotelCriteria;
 import com.event.storm.task.core.models.intent.Passenger;
 import com.event.storm.task.core.models.intent.SearchIntent;
 import com.event.storm.task.core.models.intent.SearchPreferences;
+import com.event.storm.task.core.models.intent.TransportCriteria;
 import com.event.storm.task.core.models.intent.enums.DomainType;
 import com.event.storm.task.core.models.intent.enums.SortType;
 import org.springframework.stereotype.Service;
@@ -41,8 +44,14 @@ public class DefaultRefineService implements RefineService {
         if (command instanceof AddDomain addDomain) {
             return addDomain(current, addDomain);
         }
+        if (command instanceof RemoveDomain removeDomain) {
+            return removeDomain(current, removeDomain);
+        }
         if (command instanceof ChangePassengers passengers) {
             return changePassengers(current, passengers);
+        }
+        if (command instanceof ChangeTransportCriteria criteria) {
+            return changeTransportCriteria(current, criteria);
         }
         if (command instanceof ChangeHotelCriteria criteria) {
             return changeHotelCriteria(current, criteria);
@@ -105,8 +114,47 @@ public class DefaultRefineService implements RefineService {
         );
     }
 
+    private SearchIntent removeDomain(SearchIntent current, RemoveDomain command) {
+        Set<DomainType> domains = current.getDomains() == null
+                ? new LinkedHashSet<>()
+                : new LinkedHashSet<>(current.getDomains());
+        domains.remove(command.getDomain());
+        return new SearchIntent(
+                Set.copyOf(domains),
+                current.getRoute(),
+                current.getDates(),
+                current.getPassenger(),
+                current.getTransport(),
+                current.getEvent(),
+                current.getHotel(),
+                current.getPreferences()
+        );
+    }
+
     private SearchIntent changePassengers(SearchIntent current, ChangePassengers command) {
         return rebuild(current, new Passenger(command.getAdults(), command.getChildren()));
+    }
+
+    private SearchIntent changeTransportCriteria(SearchIntent current, ChangeTransportCriteria command) {
+        TransportCriteria old = current.getTransport();
+        TransportCriteria updated = new TransportCriteria(
+                command.getDirectOnly() != null ? command.getDirectOnly()
+                        : old != null && old.isDirectOnly(),
+                command.getWindow() != null ? command.getWindow()
+                        : old != null ? old.getWindow() : null,
+                command.getExcludeWindow() != null ? command.getExcludeWindow()
+                        : old != null ? old.getExcludeWindow() : null
+        );
+        return new SearchIntent(
+                current.getDomains(),
+                current.getRoute(),
+                current.getDates(),
+                current.getPassenger(),
+                updated,
+                current.getEvent(),
+                current.getHotel(),
+                current.getPreferences()
+        );
     }
 
     private SearchIntent changeHotelCriteria(SearchIntent current, ChangeHotelCriteria command) {
