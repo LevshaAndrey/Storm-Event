@@ -359,8 +359,9 @@ public class AtlasProvider implements SearchProvider {
         if (query == null || query.isBlank()) {
             return Optional.empty();
         }
+        Optional<Station> byRegion = resolveWithRegion(query);
         String norm = normalize(query);
-        Optional<Station> resolved = resolve(norm);
+        Optional<Station> resolved = byRegion.isPresent() ? byRegion : resolve(norm);
         if (resolved.isEmpty()) {
             String transliterated = normalize(transliterateToCyrillic(query));
             if (!transliterated.isEmpty() && !transliterated.equals(norm)) {
@@ -370,6 +371,30 @@ public class AtlasProvider implements SearchProvider {
         resolved.ifPresent(station -> log.info("Atlas station '{}' распознана как '{}' ({}, {})",
                 query, station.name(), station.id(), station.description()));
         return resolved;
+    }
+
+    /**
+     * Разрешает "Рудня (Витебская обл.)": берём станции с базовым именем и фильтруем по региону.
+     */
+    private Optional<Station> resolveWithRegion(String query) {
+        String trimmed = query.trim();
+        int open = trimmed.indexOf('(');
+        if (open <= 0 || !trimmed.endsWith(")")) {
+            return Optional.empty();
+        }
+        String base = trimmed.substring(0, open).trim();
+        String region = trimmed.substring(open + 1, trimmed.length() - 1).trim();
+        String baseNorm = normalize(base);
+        String regionNorm = normalize(region);
+        List<Station> candidates = byNormalizedName.get(baseNorm);
+        if (candidates == null || candidates.isEmpty() || regionNorm.isEmpty()) {
+            return Optional.empty();
+        }
+        List<Station> matching = candidates.stream()
+                .filter(station -> station.description() != null
+                        && normalize(station.description()).contains(regionNorm))
+                .collect(Collectors.toList());
+        return matching.isEmpty() ? Optional.empty() : pickBest(matching);
     }
 
     private Optional<Station> resolve(String norm) {
