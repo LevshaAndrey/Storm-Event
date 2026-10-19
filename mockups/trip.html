@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storm Trip — план поездки</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="13" rx="3"/><path d="M5 10h14"/><circle cx="9" cy="13.5" r="1"/><circle cx="15" cy="13.5" r="1"/><path d="M8.5 16.5l-2 4M15.5 16.5l2 4"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="13" rx="3"/><path d="M4 10h16"/><circle cx="8.5" cy="19" r="1.5"/><circle cx="15.5" cy="19" r="1.5"/></symbol>
+    <symbol id="i-event" viewBox="0 0 24 24"><circle cx="7" cy="17.5" r="3"/><circle cx="17" cy="15.5" r="3"/><path d="M10 17.5V7l10-2v10"/></symbol>
+    <symbol id="i-hotel" viewBox="0 0 24 24"><path d="M3 19v-9h18v9"/><path d="M3 14h18"/><circle cx="7.5" cy="11" r="1.5"/><path d="M3 19v-2M21 19v-2"/></symbol>
+    <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M7.5 19H13a4 4 0 0 0 0-8H9a4 4 0 0 1 0-8h8" stroke-dasharray="3 2.5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21c4.5-3.6 7-7 7-10.5a7 7 0 1 0-14 0C5 14 7.5 17.4 12 21z"/><circle cx="12" cy="10.5" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1.5a2.5 2.5 0 0 0 0 5V16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1.5a2.5 2.5 0 0 0 0-5z"/><path d="M14 6v12" stroke-dasharray="2.5 2.5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8 3.5V6M16 3.5V6"/></symbol>
+    <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v10M8 10.5l4 4 4-4"/><path d="M5 19h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark"><svg class="ic"><use href="#i-arrow"/></svg></span>Storm Trip</a>
+    <nav>
+      <a href="index.html">Поиск</a>
+      <a href="results.html">Результаты</a>
+      <a class="active" href="trip.html">План поездки</a>
+      <a href="walk.html">Прогулка</a>
+    </nav>
+    <span class="user-chip">Минск</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" style="margin-bottom: 20px">
+    <div class="row" style="align-items: flex-start">
+      <div>
+        <h1 style="font-size: 24px; letter-spacing: -.4px">Минск → Брест</h1>
+        <p class="small muted" style="margin-top: 4px">24–26 октября · 1 взрослый · собрано из 4 сервисов</p>
+        <div class="chips" style="margin-top: 10px">
+          <span class="tag t-accent">score 0.74</span>
+          <span class="tag t-green">прямые рейсы</span>
+          <span class="tag t-amber">прогулка вписана</span>
+          <span class="tag">зазор до концерта 6 ч 50 мин</span>
+        </div>
+      </div>
+      <div style="margin-left: auto; min-width: 230px">
+        <div class="budget-top"><b>262,50 BYN</b><small>из 300</small></div>
+        <div class="bar"><div class="bar-fill" style="width: 87%"></div></div>
+        <p class="small muted" style="margin-top: 6px">остаток 37,50 BYN</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <section class="card">
+      <h2 style="margin-bottom: 2px">Таймлайн поездки</h2>
+
+      <div class="day-head"><h3>Пятница, 24 октября</h3><span>дорога, заселение, концерт</span></div>
+
+      <div class="tl-item">
+        <div class="tl-time">08:30</div>
+        <div class="tl-body" style="--k: var(--teal)">
+          <span class="tl-ic k-bus"><svg class="ic"><use href="#i-bus"/></svg></span>
+          <b>Маршрутка Минск → Брест</b>
+          <small>Автовокзал Центральный · 25 BYN · в пути 3 ч 40 мин · источник TicketBus</small>
+          <div class="tl-links">
+            <button class="btn btn-ghost">Расписание</button>
+            <button class="btn btn-ghost">Купить место</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">12:10</div>
+        <div class="tl-body" style="--k: #98a2b3">
+          <span class="tl-ic" style="background: #98a2b3"><svg class="ic"><use href="#i-pin"/></svg></span>
+          <b>Прибытие в Брест</b>
+          <small>автовокзал · до центра 15 минут пешком</small>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-body" style="--k: var(--green)">
+          <span class="tl-ic k-hotel"><svg class="ic"><use href="#i-hotel"/></svg></span>
+          <b>Заселение: отель «Беларусь», 4★</b>
+          <small>1,2 км от площадки · 90 BYN/ночь × 2 ночи · источник BelHotel</small>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-body" style="--k: #98a2b3">
+          <span class="tl-ic" style="background: #98a2b3"><svg class="ic"><use href="#i-clock"/></svg></span>
+          <b>Обед и свободное время</b>
+          <small>рядом с отелем: пешеходная Советская, кофейни из прогулки</small>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-body" style="--k: var(--violet)">
+          <span class="tl-ic k-event"><svg class="ic"><use href="#i-event"/></svg></span>
+          <b>Концерт</b>
+          <small>ДК Профсоюзов · 45 BYN · зазор после прибытия 6 ч 50 мин · источник Афиша</small>
+          <div class="tl-links">
+            <button class="btn btn-ghost">Купить билет</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-head"><h3>Суббота, 25 октября</h3><span>день прогулки</span></div>
+
+      <div class="tl-item">
+        <div class="tl-time">08:30</div>
+        <div class="tl-body" style="--k: var(--green)">
+          <span class="tl-ic k-hotel"><svg class="ic"><use href="#i-hotel"/></svg></span>
+          <b>Завтрак в отеле</b>
+          <small>включён в проживание</small>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-body" style="--k: var(--amber)">
+          <span class="tl-ic k-walk"><svg class="ic"><use href="#i-walk"/></svg></span>
+          <b>Прогулка «Центр и набережная»</b>
+          <small>5 точек · 3,4 км · 2 ч 10 мин · маршрут: ближайший сосед + 2-opt, время по OSRM</small>
+          <div class="tl-links">
+            <a class="btn btn-primary" href="walk.html">Открыть маршрут</a>
+            <button class="btn btn-ghost">Изменить темп</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-body" style="--k: #98a2b3">
+          <span class="tl-ic" style="background: #98a2b3"><svg class="ic"><use href="#i-clock"/></svg></span>
+          <b>Обед: гастро-точка из прогулки</b>
+          <small>кафе на Советской · ~25 BYN (вне бюджета поездки)</small>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-body" style="--k: var(--amber)">
+          <span class="tl-ic k-walk"><svg class="ic"><use href="#i-walk"/></svg></span>
+          <b>Опция: Брестская крепость</b>
+          <small>4 км от центра · 1 ч 30 мин · можно на такси за 15 мин</small>
+          <div class="tl-links">
+            <button class="btn btn-ghost">Добавить в план</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-head"><h3>Воскресенье, 26 октября</h3><span>обратная дорога</span></div>
+
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-body" style="--k: var(--green)">
+          <span class="tl-ic k-hotel"><svg class="ic"><use href="#i-hotel"/></svg></span>
+          <b>Выезд из отеля</b>
+          <small>камеру хранения можно оставить на вокзале</small>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-body" style="--k: var(--amber)">
+          <span class="tl-ic k-walk"><svg class="ic"><use href="#i-walk"/></svg></span>
+          <b>Прогулка по бульвару (по желанию)</b>
+          <small>рекомендации из базы мест · 1 ч</small>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">18:40</div>
+        <div class="tl-body" style="--k: var(--accent)">
+          <span class="tl-ic k-train"><svg class="ic"><use href="#i-train"/></svg></span>
+          <b>Поезд 742Б Брест → Минск</b>
+          <small>18:40 → 22:20 · 12,50 BYN · прямой · источник БЖД</small>
+          <div class="tl-links">
+            <button class="btn btn-ghost">Купить билет</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-end">
+        <svg class="ic"><use href="#i-check"/></svg>
+        Прибытие: Минск-Пассажирский, 22:20
+      </div>
+    </section>
+
+    <aside class="rail">
+      <section class="card">
+        <h3>Карта поездки</h3>
+        <div class="map">
+          <svg viewBox="0 0 420 300" role="img" aria-label="Карта поездки">
+            <rect width="420" height="300" fill="#eef1f4"/>
+            <g stroke="#dfe3e8" stroke-width="3">
+              <path d="M0 60H420M0 120H420M0 180H420M0 240H420"/>
+              <path d="M70 0V300M150 0V300M230 0V300M310 0V300"/>
+            </g>
+            <path d="M0 262C90 244 200 286 420 240" stroke="#c9dff0" stroke-width="11" fill="none"/>
+            <path d="M60 240L150 150L250 110" stroke="#2f6fed" stroke-width="3.5" stroke-dasharray="6 5" fill="none"/>
+            <path d="M250 110L340 70" stroke="#98a2b3" stroke-width="3" stroke-dasharray="4 5" fill="none"/>
+            <g font-family="inherit" font-size="10.5" fill="#52606d">
+              <text x="30" y="228">Вокзал</text>
+              <text x="120" y="138">Отель</text>
+              <text x="222" y="98">ДК Профсоюзов</text>
+              <text x="300" y="58">Крепость</text>
+            </g>
+            <g font-family="inherit" font-size="12" font-weight="700" text-anchor="middle">
+              <circle cx="60" cy="240" r="11" fill="#2f6fed"/><text x="60" y="244" fill="#fff">1</text>
+              <circle cx="150" cy="150" r="11" fill="#16a34a"/><text x="150" y="154" fill="#fff">2</text>
+              <circle cx="250" cy="110" r="11" fill="#7c3aed"/><text x="250" y="114" fill="#fff">3</text>
+              <circle cx="340" cy="70" r="11" fill="#98a2b3"/><text x="340" y="74" fill="#fff">4</text>
+            </g>
+          </svg>
+        </div>
+        <div class="map-legend">
+          <span><span class="legend-dot" style="background: #2f6fed"></span>транспорт</span>
+          <span><span class="legend-dot" style="background: #16a34a"></span>отель</span>
+          <span><span class="legend-dot" style="background: #7c3aed"></span>событие</span>
+          <span><span class="legend-dot" style="background: #98a2b3"></span>опция</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Бюджет</h3>
+        <div class="cost-rows">
+          <div><span>Маршрутка</span><span>25,00 BYN</span></div>
+          <div><span>Поезд обратно</span><span>12,50 BYN</span></div>
+          <div><span>Концерт</span><span>45,00 BYN</span></div>
+          <div><span>Отель × 2 ночи</span><span>180,00 BYN</span></div>
+          <div class="total"><span>Итого</span><span>262,50 BYN</span></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Источники</h3>
+        <ul class="source-list">
+          <li><span class="status-dot ok"></span><div><b>БЖД</b><small>поезд обратно</small></div><span class="src-stat ok">ok</span></li>
+          <li><span class="status-dot ok"></span><div><b>TicketBus</b><small>маршрутка туда</small></div><span class="src-stat ok">ok</span></li>
+          <li><span class="status-dot ok"></span><div><b>Афиша</b><small>концерт</small></div><span class="src-stat ok">ok</span></li>
+          <li><span class="status-dot ok"></span><div><b>BelHotel</b><small>отель</small></div><span class="src-stat ok">ok</span></li>
+          <li><span class="status-dot ok"></span><div><b>OSM · места</b><small>прогулка</small></div><span class="src-stat ok">ok</span></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="stack-8">
+          <button class="btn btn-primary btn-block"><svg class="ic"><use href="#i-cal"/></svg>Скачать .ics</button>
+          <button class="btn btn-ghost btn-block"><svg class="ic"><use href="#i-dl"/></svg>Поделиться планом</button>
+        </div>
+        <p class="small muted" style="margin-top: 10px">Билеты и брони оформляются на сайтах источников — план хранит ссылки.</p>
+      </section>
+    </aside>
+  </div>
+
+  <p class="footer-note">Storm Trip — макет интерфейса · таймлайн собран планировщиком из комбинации офферов</p>
+</main>
+
+</body>
+</html>

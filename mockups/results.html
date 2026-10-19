@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storm Trip — результаты</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="13" rx="3"/><path d="M5 10h14"/><circle cx="9" cy="13.5" r="1"/><circle cx="15" cy="13.5" r="1"/><path d="M8.5 16.5l-2 4M15.5 16.5l2 4"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="13" rx="3"/><path d="M4 10h16"/><circle cx="8.5" cy="19" r="1.5"/><circle cx="15.5" cy="19" r="1.5"/></symbol>
+    <symbol id="i-event" viewBox="0 0 24 24"><circle cx="7" cy="17.5" r="3"/><circle cx="17" cy="15.5" r="3"/><path d="M10 17.5V7l10-2v10"/></symbol>
+    <symbol id="i-hotel" viewBox="0 0 24 24"><path d="M3 19v-9h18v9"/><path d="M3 14h18"/><circle cx="7.5" cy="11" r="1.5"/><path d="M3 19v-2M21 19v-2"/></symbol>
+    <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M7.5 19H13a4 4 0 0 0 0-8H9a4 4 0 0 1 0-8h8" stroke-dasharray="3 2.5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21c4.5-3.6 7-7 7-10.5a7 7 0 1 0-14 0C5 14 7.5 17.4 12 21z"/><circle cx="12" cy="10.5" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1.5a2.5 2.5 0 0 0 0 5V16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1.5a2.5 2.5 0 0 0 0-5z"/><path d="M14 6v12" stroke-dasharray="2.5 2.5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8 3.5V6M16 3.5V6"/></symbol>
+    <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v10M8 10.5l4 4 4-4"/><path d="M5 19h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark"><svg class="ic"><use href="#i-arrow"/></svg></span>Storm Trip</a>
+    <nav>
+      <a href="index.html">Поиск</a>
+      <a class="active" href="results.html">Результаты</a>
+      <a href="trip.html">План поездки</a>
+      <a href="walk.html">Прогулка</a>
+    </nav>
+    <span class="user-chip">Минск</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card query-bar">
+    <div class="query-summary">
+      Минск → Брест · 24–26 октября · концерт · до 300 BYN
+      <small>1 взрослый · интент разобран правилами, уточняется чипами</small>
+    </div>
+    <a class="btn btn-ghost btn-sm" href="index.html">Изменить</a>
+  </div>
+
+  <div class="results-head">
+    <h1>Найдено 14 комбинаций</h1>
+    <div class="filters">
+      <div class="seg">
+        <button class="on">Лучшее</button>
+        <button>Дешевле</button>
+        <button>Быстрее</button>
+      </div>
+      <button class="toggle on"><span class="tick"><svg class="ic"><use href="#i-check"/></svg></span>только прямые</button>
+      <button class="toggle on"><span class="tick"><svg class="ic"><use href="#i-check"/></svg></span>пешком ≤ 3 км</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <section class="stack">
+
+      <article class="card result-card">
+        <header class="rc-head">
+          <div>
+            <h2>Маршрутка + Концерт + Отель + Прогулка</h2>
+            <p class="rc-sub">Минск → Брест · 24–26 октября · 1 взрослый</p>
+          </div>
+          <span class="score-badge">0.74<small>SCORE</small></span>
+        </header>
+
+        <ul class="legs">
+          <li>
+            <span class="leg-ic k-bus"><svg class="ic"><use href="#i-bus"/></svg></span>
+            <div><b>Маршрутка, 08:30 → 12:10</b><small>Минск, автовокзал Центральный · 25 BYN · прямой</small></div>
+          </li>
+          <li>
+            <span class="leg-ic k-event"><svg class="ic"><use href="#i-event"/></svg></span>
+            <div><b>Концерт, 19:00</b><small>ДК Профсоюзов · 45 BYN · зазор после прибытия 6 ч 50 мин</small></div>
+          </li>
+          <li>
+            <span class="leg-ic k-walk"><svg class="ic"><use href="#i-walk"/></svg></span>
+            <div><b>Прогулка «Центр и набережная»</b><small>5 точек · 3,4 км · 2 ч 10 мин · вписана в свободное окно</small></div>
+          </li>
+          <li>
+            <span class="leg-ic k-hotel"><svg class="ic"><use href="#i-hotel"/></svg></span>
+            <div><b>Отель «Беларусь», 4★</b><small>1,2 км от площадки · 90 BYN/ночь × 2</small></div>
+          </li>
+        </ul>
+
+        <div class="rc-tags">
+          <span class="tag t-accent">рекомендуем</span>
+          <span class="tag t-green">прямой рейс</span>
+          <span class="tag">зазор 6 ч 50 мин</span>
+          <span class="tag t-amber">прогулка вписана</span>
+        </div>
+
+        <footer class="rc-foot">
+          <div class="price">262,50 BYN<small>за поездку</small></div>
+          <div class="rc-actions">
+            <a class="btn btn-primary" href="trip.html">Собрать план</a>
+            <a class="btn btn-ghost" href="walk.html">Прогулка</a>
+          </div>
+        </footer>
+      </article>
+
+      <article class="card result-card">
+        <header class="rc-head">
+          <div>
+            <h2>Поезд + Фестиваль + Отель</h2>
+            <p class="rc-sub">Минск → Брест · 24–26 октября · 1 взрослый</p>
+          </div>
+          <span class="score-badge">0.68<small>SCORE</small></span>
+        </header>
+
+        <ul class="legs">
+          <li>
+            <span class="leg-ic k-train"><svg class="ic"><use href="#i-train"/></svg></span>
+            <div><b>Поезд 742Б, 06:42 → 10:40</b><small>Минск-Пассажирский · 12,50 BYN · прямой</small></div>
+          </li>
+          <li>
+            <span class="leg-ic k-event"><svg class="ic"><use href="#i-event"/></svg></span>
+            <div><b>Фестиваль «Берестье», 14:00</b><small>парк 1 Мая · 60 BYN · зазор 3 ч 20 мин</small></div>
+          </li>
+          <li>
+            <span class="leg-ic k-hotel"><svg class="ic"><use href="#i-hotel"/></svg></span>
+            <div><b>Отель «Интурист», 3★</b><small>1,8 км от площадки · 41,90 BYN/ночь × 2</small></div>
+          </li>
+        </ul>
+
+        <div class="rc-tags">
+          <span class="tag t-green">прямой рейс</span>
+          <span class="tag">дешевле варианта с прогулкой</span>
+          <span class="tag">без прогулки</span>
+        </div>
+
+        <footer class="rc-foot">
+          <div class="price">168,80 BYN<small>за поездку</small></div>
+          <div class="rc-actions">
+            <a class="btn btn-primary" href="trip.html">Собрать план</a>
+          </div>
+        </footer>
+      </article>
+
+      <article class="card result-card">
+        <header class="rc-head">
+          <div>
+            <h2>Маршрутка туда + поезд обратно + Концерт</h2>
+            <p class="rc-sub">Минск → Брест · 24–26 октября · без ночёвки</p>
+          </div>
+          <span class="score-badge">0.58<small>SCORE</small></span>
+        </header>
+
+        <ul class="legs">
+          <li>
+            <span class="leg-ic k-bus"><svg class="ic"><use href="#i-bus"/></svg></span>
+            <div><b>Маршрутка, 08:30 → 12:10</b><small>Минск, автовокзал Центральный · 25 BYN · прямой</small></div>
+          </li>
+          <li>
+            <span class="leg-ic k-event"><svg class="ic"><use href="#i-event"/></svg></span>
+            <div><b>Концерт, 19:00</b><small>ДК Профсоюзов · 45 BYN</small></div>
+          </li>
+          <li>
+            <span class="leg-ic k-train"><svg class="ic"><use href="#i-train"/></svg></span>
+            <div><b>Поезд обратно, 23:40 → 03:18</b><small>Брест-Центральный · 12,50 BYN · прямой</small></div>
+          </li>
+        </ul>
+
+        <div class="rc-tags">
+          <span class="tag t-green">самый дешёвый</span>
+          <span class="tag t-amber">ночной возврат</span>
+        </div>
+
+        <footer class="rc-foot">
+          <div class="price">82,50 BYN<small>за поездку</small></div>
+          <div class="rc-actions">
+            <a class="btn btn-primary" href="trip.html">Собрать план</a>
+          </div>
+        </footer>
+      </article>
+
+    </section>
+
+    <aside class="rail">
+      <section class="card">
+        <h3>Статусы источников</h3>
+        <ul class="source-list">
+          <li>
+            <span class="status-dot ok"></span>
+            <div><b>БЖД</b><small>поезда, расписания</small></div>
+            <span class="src-stat ok">12 предложений</span>
+          </li>
+          <li>
+            <span class="status-dot ok"></span>
+            <div><b>TicketBus</b><small>автобусы, маршрутки</small></div>
+            <span class="src-stat ok">8 предложений</span>
+          </li>
+          <li>
+            <span class="status-dot empty"></span>
+            <div><b>TicketPro</b><small>на эти даты рейсов нет</small></div>
+            <span class="src-stat empty">0</span>
+          </li>
+          <li>
+            <span class="status-dot ok"></span>
+            <div><b>Афиша</b><small>события Бреста</small></div>
+            <span class="src-stat ok">5 событий</span>
+          </li>
+          <li>
+            <span class="status-dot ok"></span>
+            <div><b>BelHotel</b><small>проживание</small></div>
+            <span class="src-stat ok">4 отеля</span>
+          </li>
+          <li>
+            <span class="status-dot ok"></span>
+            <div><b>OSM · места</b><small>POI для прогулок</small></div>
+            <span class="src-stat ok">34 места</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="callout">
+        <b>Уточняйте прямо здесь.</b> Напишите «дешевле» или «без отеля» — ядро пересоберёт комбинации
+        из уже полученных офферов и не будет дёргать источники повторно.
+      </section>
+    </aside>
+  </div>
+
+  <p class="footer-note">Storm Trip — макет интерфейса · комбинации собраны ядром из офферов сервисов</p>
+</main>
+
+</body>
+</html>
