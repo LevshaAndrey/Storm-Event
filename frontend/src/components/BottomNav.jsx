@@ -3,7 +3,8 @@ import { Icon } from '../icons.jsx'
 const tabs = [
   { id: 'search', label: 'Поиск', icon: 'search' },
   { id: 'events', label: 'Афиша', icon: 'ticket' },
-  { id: 'trips', label: 'Поездки', icon: 'route' }
+  { id: 'trips', label: 'Поездки', icon: 'route' },
+  { id: 'settings', label: 'Ещё', icon: 'tune' }
 ]
 
 export function BottomNav({ active, onChange, badge }) {

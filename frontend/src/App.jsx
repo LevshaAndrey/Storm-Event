@@ -8,7 +8,11 @@ import { Icon, Logo } from './icons.jsx'
 import { SearchScreen } from './screens/SearchScreen.jsx'
 import { EventsScreen } from './screens/EventsScreen.jsx'
 import { ResultsScreen } from './screens/ResultsScreen.jsx'
+import { SettingsScreen } from './screens/SettingsScreen.jsx'
+import { SplashScreen } from './components/SplashScreen.jsx'
 import { addDays, formatPrice, localISO, nextWeekend } from './format.js'
+import { applyTheme, loadSettings, saveSettings } from './settings.js'
+import { currentPermission, requestPushPermission, showPush } from './notifications.js'
 
 const FORM_KEY = 'storm-trip.form.v1'
 const EVENT_KEY = 'storm-trip.event.v1'
@@ -127,6 +131,27 @@ export default function App() {
   const [selectedCombination, setSelectedCombination] = useState(null)
   const [online, setOnline] = useState(() => navigator.onLine)
   const [userId] = useState(getUserId)
+  const [settings, setSettings] = useState(loadSettings)
+  const [pushPermission, setPushPermission] = useState(currentPermission)
+  const [booting, setBooting] = useState(true)
+  const [splashLeaving, setSplashLeaving] = useState(false)
+
+  useEffect(() => {
+    saveSettings(settings)
+  }, [settings])
+
+  useEffect(() => {
+    applyTheme(settings.theme)
+  }, [settings.theme])
+
+  useEffect(() => {
+    const t1 = setTimeout(() => setSplashLeaving(true), 1500)
+    const t2 = setTimeout(() => setBooting(false), 1950)
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+    }
+  }, [])
 
   useEffect(() => {
     try {
@@ -181,6 +206,44 @@ export default function App() {
   const closeToast = useCallback(() => setToast(null), [])
   const closeSheet = useCallback(() => setSelectedCombination(null), [])
 
+  const updateSettings = useCallback((patch) => {
+    setSettings((current) => ({ ...current, ...patch }))
+  }, [])
+
+  const setPush = useCallback(
+    async (next) => {
+      if (!next) {
+        updateSettings({ pushEnabled: false })
+        return
+      }
+      const permission = await requestPushPermission()
+      setPushPermission(permission)
+      if (permission !== 'granted') {
+        notify(
+          permission === 'unsupported'
+            ? 'Браузер не поддерживает уведомления.'
+            : 'Разрешение на уведомления не выдано.',
+          'error'
+        )
+        return
+      }
+      updateSettings({ pushEnabled: true })
+      showPush('Storm Trip', 'Уведомления включены — сообщим, когда соберём маршрут.')
+    },
+    [notify, updateSettings]
+  )
+
+  const testPush = useCallback(async () => {
+    const permission = await requestPushPermission()
+    setPushPermission(permission)
+    if (permission !== 'granted') {
+      notify('Разрешение на уведомления не выдано.', 'error')
+      return
+    }
+    const shown = await showPush('Storm Trip работает', 'Так придёт сигнал, когда поиск соберёт маршрут.')
+    if (shown) notify('Тестовое уведомление отправлено')
+  }, [notify])
+
   async function runSearch() {
     const problem = validate(form)
     if (problem) {
@@ -200,6 +263,12 @@ export default function App() {
         setResult(data.result)
         if (!data.result.offers?.length && !data.result.combinations?.length) {
           notify('Источники не вернули предложений. Попробуйте изменить даты.', 'info')
+        }
+        if (settings.pushEnabled && settings.pushOnResults && document.hidden) {
+          showPush(
+            'Маршрут собран',
+            `${form.from} → ${form.to}: предложений ${data.result.offers?.length || 0}, готовых вариантов ${data.result.combinations?.length || 0}.`
+          )
         }
       } else {
         const message = data?.reply || 'Не удалось собрать поездку.'
@@ -269,7 +338,6 @@ export default function App() {
           <Logo />
           <span className="brand-copy">
             <b>Storm Trip</b>
-            <small>{loading ? 'собираем поездку' : 'поездки без нейросетей'}</small>
           </span>
         </button>
         <button
@@ -320,6 +388,16 @@ export default function App() {
             onSelectCombination={setSelectedCombination}
           />
         ) : null}
+
+        {tab === 'settings' ? (
+          <SettingsScreen
+            settings={settings}
+            onChange={updateSettings}
+            permission={pushPermission}
+            onSetPush={setPush}
+            onTestPush={testPush}
+          />
+        ) : null}
       </main>
 
       <BottomNav active={tab} onChange={setTab} badge={result?.combinations?.length || null} />
@@ -334,6 +412,8 @@ export default function App() {
       </Sheet>
 
       <Toast toast={toast} onClose={closeToast} />
+
+      {booting ? <SplashScreen leaving={splashLeaving} /> : null}
     </div>
   )
 }

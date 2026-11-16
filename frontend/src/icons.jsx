@@ -129,6 +129,29 @@ const icons = {
       <path d="M20 11a8 8 0 1 0-2.2 5.5" />
       <path d="M20 5v6h-6" />
     </>
+  ),
+  van: (
+    <>
+      <rect x="2.5" y="5.5" width="19" height="11.5" rx="2.5" />
+      <rect x="5" y="7.5" width="14" height="3.6" rx="1.2" />
+      <path d="M2.5 9H1.2M21.5 9h1.3" />
+      <path d="M5 14h2.5M16.5 14h2.5" />
+      <path d="M10.4 13.2h3.2M10.4 15.4h3.2" />
+      <path d="M7 17v1.6M17 17v1.6" />
+    </>
+  ),
+  bell: (
+    <>
+      <path d="M18 9.5a6 6 0 1 0-12 0c0 4.6-1.8 5.8-1.8 5.8h15.6S18 14.1 18 9.5Z" />
+      <path d="M10.2 19a2.1 2.1 0 0 0 3.6 0" />
+    </>
+  ),
+  moon: <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" />,
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19" />
+    </>
   )
 }
 
@@ -154,7 +177,48 @@ export function Icon({ name, size = 20, className = '', strokeWidth = 1.8 }) {
 export function Logo({ small = false }) {
   return (
     <span className={`logo ${small ? 'logo-small' : ''}`} aria-hidden="true">
-      <Icon name="route" size={small ? 18 : 22} strokeWidth={2.1} />
+      <Icon name="van" size={small ? 20 : 24} strokeWidth={1.7} />
     </span>
+  )
+}
+
+export function VanArt({ className = '' }) {
+  return (
+    <svg className={className} viewBox="0 0 480 300" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="vanBody" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#3d4f46" />
+          <stop offset="1" stopColor="#1c2a23" />
+        </linearGradient>
+        <linearGradient id="vanGlass" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#123028" />
+          <stop offset="0.55" stopColor="#0f2a2a" />
+          <stop offset="1" stopColor="#0b1f19" />
+        </linearGradient>
+      </defs>
+      <ellipse className="van-ground" cx="240" cy="288" rx="162" ry="11" fill="rgba(52, 211, 153, 0.2)" />
+      <rect x="76" y="272" width="56" height="20" rx="9" fill="#0a0f0c" />
+      <rect x="348" y="272" width="56" height="20" rx="9" fill="#0a0f0c" />
+      <rect x="14" y="98" width="30" height="44" rx="11" fill="#26362e" />
+      <rect x="436" y="98" width="30" height="44" rx="11" fill="#26362e" />
+      <rect x="40" y="112" width="18" height="12" rx="5" fill="#26362e" />
+      <rect x="422" y="112" width="18" height="12" rx="5" fill="#26362e" />
+      <rect x="52" y="42" width="376" height="208" rx="48" fill="url(#vanBody)" />
+      <rect x="84" y="66" width="312" height="86" rx="24" fill="url(#vanGlass)" />
+      <path d="M118 152 210 66h46L164 152Z" fill="rgba(110, 231, 183, 0.13)" />
+      <path d="M244 152 336 66h14L258 152Z" fill="rgba(255, 255, 255, 0.06)" />
+      <rect x="64" y="178" width="80" height="42" rx="15" fill="#e9fbf1" />
+      <rect x="74" y="187" width="46" height="24" rx="11" fill="#bdf3d8" />
+      <rect x="336" y="178" width="80" height="42" rx="15" fill="#e9fbf1" />
+      <rect x="360" y="187" width="46" height="24" rx="11" fill="#bdf3d8" />
+      <rect x="176" y="174" width="128" height="50" rx="15" fill="#101b15" stroke="rgba(255, 255, 255, 0.06)" />
+      <path d="M190 190h100M190 206h100" stroke="#2a3d33" strokeWidth="5" strokeLinecap="round" />
+      <path d="M247 182l-21 27h13l-7 21 23-28h-13l5-20Z" fill="#34d399" />
+      <rect x="52" y="230" width="376" height="54" rx="26" fill="#0f1913" />
+      <circle cx="88" cy="257" r="7" fill="#2ce2a2" opacity="0.85" />
+      <circle cx="392" cy="257" r="7" fill="#2ce2a2" opacity="0.85" />
+      <rect x="203" y="243" width="74" height="27" rx="7" fill="#e6f1ea" />
+      <path d="M213 256h30M250 256h17" stroke="#3a5a4c" strokeWidth="4" strokeLinecap="round" />
+    </svg>
   )
 }
