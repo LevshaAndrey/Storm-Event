@@ -1,0 +1,14 @@
+.git
+.gitignore
+.idea
+.gigaide
+.mvn
+target
+frontend
+mockups
+docs
+infra
+.env
+*.md
+belhotel_city.json
+belhotel_hotels.json
