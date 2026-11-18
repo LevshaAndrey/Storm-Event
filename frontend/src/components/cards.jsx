@@ -17,18 +17,20 @@ import {
   formatPrice,
   formatTime,
   offerType,
+  plural,
   sourceLabels,
   statusLabels
 } from '../format.js'
+import { t } from '../i18n.js'
 
 export function OfferRow({ offer, showLink = true }) {
   const [broken, setBroken] = useState(false)
   const type = offerType(offer)
   const price = formatPrice(offer?.price)
   const url = offer?.url
-  const source = sourceLabels[offer?.source] || offer?.source
+  const source = t(sourceLabels[offer?.source] || offer?.source)
   let icon = 'ticket'
-  let title = offer?.title || 'Предложение'
+  let title = offer?.title || t('Предложение')
   let meta = []
   let thumb = null
 
@@ -37,7 +39,7 @@ export function OfferRow({ offer, showLink = true }) {
     title = offer.title || `${offer.from?.name || '—'} → ${offer.to?.name || '—'}`
     meta = [
       `${formatDate(offer.departure)} · ${formatTime(offer.departure)} → ${formatTime(offer.arrival)}`,
-      offer.direct ? 'без пересадок' : 'с пересадками',
+      offer.direct ? t('без пересадок') : t('с пересадками'),
       source
     ]
   } else if (type === 'hotel') {
@@ -87,7 +89,7 @@ export function CombinationCard({ combination, onClick, passengers = 1 }) {
   const transport = offers.find((offer) => offerType(offer) === 'transport')
   const event = offers.find((offer) => offerType(offer) === 'event')
   const hotel = offers.find((offer) => offerType(offer) === 'hotel')
-  const title = event?.title || hotel?.title || transport?.title || 'Вариант поездки'
+  const title = event?.title || hotel?.title || transport?.title || t('Вариант поездки')
   const price = formatPrice(combination.totalPrice)
   const score = Math.round((Number(combination.score) || 0) * 100)
   const perPerson = Number(combination.totalPrice?.amount) / (Number(passengers) || 1)
@@ -95,10 +97,10 @@ export function CombinationCard({ combination, onClick, passengers = 1 }) {
   const composition = offers
     .map((offer) => {
       const type = offerType(offer)
-      if (type === 'transport') return domainLabels[offer.domain] || 'Транспорт'
-      if (type === 'event') return 'Событие'
-      if (type === 'hotel') return 'Отель'
-      return 'Услуга'
+      if (type === 'transport') return t(domainLabels[offer.domain] || 'Транспорт')
+      if (type === 'event') return t('Событие')
+      if (type === 'hotel') return t('Отель')
+      return t('Услуга')
     })
     .join(' + ')
 
@@ -136,7 +138,7 @@ export function CombinationCard({ combination, onClick, passengers = 1 }) {
       <div className="combo-foot">
         <span className="price-label">итого</span>
         {Number(passengers) > 1 && Number.isFinite(perPerson) ? (
-          <span className="per-person">≈ {Math.round(perPerson)} / чел.</span>
+          <span className="per-person">≈ {Math.round(perPerson)} {t('/ чел.')}</span>
         ) : null}
         <strong className="price">{price || '—'}</strong>
         <Icon name="chevronRight" size={18} />
@@ -191,7 +193,11 @@ export function ItineraryCard({ itinerary, onNotify }) {
 
       <div className="itinerary-meta">
         <span><Icon name="clock" size={14} />{formatDuration(itinerary.durationMinutes)}</span>
-        <span>{transfers ? `${transfers} пересад.` : 'без пересадок'}</span>
+        <span>
+          {transfers
+            ? `${transfers} ${plural(transfers, 'пересадка', 'пересадки', 'пересадок')}`
+            : t('без пересадок')}
+        </span>
         {distance ? <span>{Math.round(distance)} км</span> : null}
         {speed ? <span>≈ {speed} км/ч</span> : null}
         {savings > 0 ? (
@@ -218,7 +224,7 @@ export function ItineraryCard({ itinerary, onNotify }) {
                   <b>{leg.to?.name}</b>
                 </div>
                 <small>
-                  {leg.title} · {sourceLabels[leg.source] || leg.source}
+                  {leg.title} · {t(sourceLabels[leg.source] || leg.source)}
                   {leg.price ? ` · ${formatPrice(leg.price)}` : ''}
                 </small>
                 {leg.url ? (
@@ -278,7 +284,7 @@ export function CombinationDetails({ combination, passengers = 1, onNotify }) {
         <span className="eyebrow">стоимость поездки</span>
         <strong>{formatPrice(combination.totalPrice) || '—'}</strong>
         {Number(passengers) > 1 && Number.isFinite(perPerson) ? (
-          <span className="per-person">≈ {Math.round(perPerson)} BYN на человека</span>
+          <span className="per-person">≈ {Math.round(perPerson)} BYN {t('на человека')}</span>
         ) : null}
         <span className="score-note">Оценка совместимости {Math.round((Number(combination.score) || 0) * 100)}%</span>
       </div>
@@ -333,7 +339,7 @@ export function SourceStrip({ sources, onSelect }) {
           onClick={() => onSelect?.(source)}
         >
           <i className="dot" />
-          {sourceLabels[source.source] || source.source}
+          {t(sourceLabels[source.source] || source.source)}
           {source.status === 'SUCCESS' ? <b>{source.resultCount}</b> : null}
         </button>
       ))}

@@ -21,6 +21,7 @@ import {
   plural,
   sortLabels
 } from '../format.js'
+import { t } from '../i18n.js'
 import { Icon } from '../icons.jsx'
 
 const sourceOrder = ['ATLAS', 'BZD', 'TICKET_BUS', 'TICKET_PRO', 'BEL_HOTEL']
@@ -109,7 +110,7 @@ function SearchProgress({ form }) {
           </div>
         ))}
       </div>
-      <span className="progress-time">{seconds} сек</span>
+      <span className="progress-time">{seconds} {t('сек')}</span>
     </div>
   )
 }
@@ -121,23 +122,25 @@ function IntentPanel({ result, categories, onEdit }) {
 
   const chips = []
   const domains = Array.isArray(intent.domains) ? intent.domains : []
-  domains.forEach((domain) => chips.push(domainLabels[domain] || domain))
+  domains.forEach((domain) => chips.push(t(domainLabels[domain] || domain)))
   if (intent.passenger) {
     const adults = Number(intent.passenger.adults) || 1
     const children = Number(intent.passenger.children) || 0
-    chips.push(`${adults} взр.${children ? ` + ${children} дет.` : ''}`)
+    chips.push(`${adults} ${t('взр.')}${children ? ` + ${children} ${t('дет.')}` : ''}`)
   }
-  if (intent.preferences?.budgetMax) chips.push(`до ${formatMoney(intent.preferences.budgetMax)}`)
-  if (intent.preferences?.sort) chips.push(sortLabels[intent.preferences.sort] || intent.preferences.sort)
-  if (intent.transport?.directOnly) chips.push('только прямые')
+  if (intent.preferences?.budgetMax) chips.push(`${t('до')} ${formatMoney(intent.preferences.budgetMax)}`)
+  if (intent.preferences?.sort) {
+    chips.push(t(sortLabels[intent.preferences.sort] || intent.preferences.sort))
+  }
+  if (intent.transport?.directOnly) chips.push(t('только прямые'))
   if (intent.event?.query) chips.push(`«${intent.event.query}»`)
   if (intent.event?.categories?.length) {
     intent.event.categories.forEach((id) => {
       const category = categories.find((item) => item.id === id)
-      if (category) chips.push(category.label)
+      if (category) chips.push(t(category.label))
     })
   }
-  if (intent.hotel?.minRating) chips.push(`отель ${intent.hotel.minRating}★+`)
+  if (intent.hotel?.minRating) chips.push(`${t('отель')} ${intent.hotel.minRating}★+`)
 
   if (!chips.length) return null
 
@@ -365,8 +368,8 @@ export function ResultsScreen({
             <span className="countdown-chip">
               <Icon name="calendar" size={13} />
               {countdown === 0
-                ? 'поездка сегодня'
-                : `до поездки ${countdown} ${plural(countdown, 'день', 'дня', 'дней')}`}
+                ? t('поездка сегодня')
+                : `${t('до поездки')} ${countdown} ${plural(countdown, 'день', 'дня', 'дней')}`}
             </span>
           ) : null}
         </div>
@@ -438,7 +441,7 @@ export function ResultsScreen({
             <h2>Готовые варианты</h2>
             <span className="section-count">
               {activeFilters && combinations.length !== allCombinations.length
-                ? `${combinations.length} из ${allCombinations.length}`
+                ? `${combinations.length} ${t('из')} ${allCombinations.length}`
                 : combinations.length}
             </span>
           </div>
@@ -466,7 +469,7 @@ export function ResultsScreen({
             <h2>Маршруты</h2>
             <span className="section-count">
               {activeFilters && itineraries.length !== allItineraries.length
-                ? `${itineraries.length} из ${allItineraries.length}`
+                ? `${itineraries.length} ${t('из')} ${allItineraries.length}`
                 : itineraries.length}
             </span>
           </div>

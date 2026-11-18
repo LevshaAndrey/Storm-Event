@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Icon } from '../icons.jsx'
+import { t } from '../i18n.js'
 import { fetchWeather } from '../weather.js'
 
 export function WeatherChip({ city, date }) {
@@ -28,11 +29,12 @@ export function WeatherChip({ city, date }) {
   if (!weather) return null
 
   const temperature = `${weather.max > 0 ? '+' : ''}${weather.max}°`
+  const label = t(weather.label)
   return (
-    <span className="weather-chip" title={`${weather.label}, ночью ${weather.min}°`}>
+    <span className="weather-chip" title={`${label}, ${t('ночью')} ${weather.min}°`}>
       <Icon name="sun" size={13} />
       {temperature}
-      <span>{weather.label}</span>
+      <span>{label}</span>
     </span>
   )
 }

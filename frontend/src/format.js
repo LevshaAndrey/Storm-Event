@@ -1,7 +1,33 @@
-const dateFormatter = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'short' })
-const dateLongFormatter = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', weekday: 'short' })
-const timeFormatter = new Intl.DateTimeFormat('ru-RU', { hour: '2-digit', minute: '2-digit' })
-const weekdayFormatter = new Intl.DateTimeFormat('ru-RU', { weekday: 'short' })
+import { getLanguage, getLocale, t } from './i18n.js'
+
+const formatterCache = new Map()
+
+// Chrome не всегда содержит белорусские данные Intl и подставляет русские месяцы,
+// поэтому для be-BY форматируем даты сами.
+const BE_MONTHS_SHORT = [
+  'студз.', 'лют.', 'сак.', 'крас.', 'мая', 'чэрв.',
+  'ліп.', 'жн.', 'верас.', 'кастр.', 'ліс.', 'снеж.'
+]
+const BE_MONTHS_LONG = [
+  'студзеня', 'лютага', 'сакавіка', 'красавіка', 'мая', 'чэрвеня',
+  'ліпеня', 'жніўня', 'верасня', 'кастрычніка', 'лістапада', 'снежня'
+]
+const BE_WEEKDAYS = ['пн', 'аў', 'ср', 'чц', 'пт', 'сб', 'нд']
+
+function beWeekday(date) {
+  return BE_WEEKDAYS[(date.getDay() + 6) % 7]
+}
+
+function formatter(options) {
+  const locale = getLocale()
+  const key = `${locale}:${JSON.stringify(options)}`
+  let cached = formatterCache.get(key)
+  if (!cached) {
+    cached = new Intl.DateTimeFormat(locale, options)
+    formatterCache.set(key, cached)
+  }
+  return cached
+}
 
 export function parseDate(value) {
   if (!value) return null
@@ -11,22 +37,36 @@ export function parseDate(value) {
 
 export function formatDate(value) {
   const date = parseDate(value)
-  return date ? dateFormatter.format(date) : '—'
+  if (!date) return '—'
+  if (getLanguage() === 'be') {
+    return `${date.getDate()} ${BE_MONTHS_SHORT[date.getMonth()]}`
+  }
+  return formatter({ day: 'numeric', month: 'short' }).format(date)
 }
 
 export function formatDateLong(value) {
   const date = parseDate(value)
-  return date ? dateLongFormatter.format(date) : '—'
+  if (!date) return '—'
+  if (getLanguage() === 'be') {
+    return `${beWeekday(date)}, ${date.getDate()} ${BE_MONTHS_LONG[date.getMonth()]}`
+  }
+  return formatter({ day: 'numeric', month: 'long', weekday: 'short' }).format(date)
 }
 
 export function formatTime(value) {
   const date = parseDate(value)
-  return date ? timeFormatter.format(date) : '—'
+  if (!date) return '—'
+  if (getLanguage() === 'be') {
+    return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`
+  }
+  return formatter({ hour: '2-digit', minute: '2-digit' }).format(date)
 }
 
 export function formatWeekday(value) {
   const date = parseDate(value)
-  return date ? weekdayFormatter.format(date) : ''
+  if (!date) return ''
+  if (getLanguage() === 'be') return beWeekday(date)
+  return formatter({ weekday: 'short' }).format(date)
 }
 
 export function formatDuration(minutes) {
@@ -34,15 +74,15 @@ export function formatDuration(minutes) {
   const total = Math.max(0, Math.round(Number(minutes)))
   const hours = Math.floor(total / 60)
   const rest = total % 60
-  if (!hours) return `${rest} мин`
-  return rest ? `${hours} ч ${rest} мин` : `${hours} ч`
+  if (!hours) return `${rest} ${t('мин')}`
+  return rest ? `${hours} ${t('ч')} ${rest} ${t('мин')}` : `${hours} ${t('ч')}`
 }
 
 export function formatMoney(value, currency = 'BYN') {
   if (value == null || value === '') return '—'
   const number = Number(value)
   if (Number.isNaN(number)) return '—'
-  const formatted = new Intl.NumberFormat('ru-RU', {
+  const formatted = new Intl.NumberFormat(getLocale(), {
     maximumFractionDigits: number % 1 === 0 ? 0 : 2
   }).format(number)
   return `${formatted} ${currency || 'BYN'}`
@@ -54,7 +94,7 @@ export function formatPrice(price) {
 }
 
 export function dateRangeLabel(from, to) {
-  if (!from && !to) return 'Даты не выбраны'
+  if (!from && !to) return t('Даты не выбраны')
   if (!from) return formatDate(to)
   if (!to || from === to) return formatDate(from)
   return `${formatDate(from)} — ${formatDate(to)}`
@@ -91,18 +131,25 @@ export function nextWeekend() {
 export function eventDate(value) {
   const date = parseDate(value)
   if (!date) return { day: '—', month: '', weekday: '' }
-  const day = new Intl.DateTimeFormat('ru-RU', { day: '2-digit' }).format(date)
-  const month = new Intl.DateTimeFormat('ru-RU', { month: 'short' }).format(date).replace('.', '')
-  return { day, month, weekday: weekdayFormatter.format(date) }
+  if (getLanguage() === 'be') {
+    return {
+      day: String(date.getDate()).padStart(2, '0'),
+      month: BE_MONTHS_SHORT[date.getMonth()].replace('.', ''),
+      weekday: beWeekday(date)
+    }
+  }
+  const day = formatter({ day: '2-digit' }).format(date)
+  const month = formatter({ month: 'short' }).format(date).replace('.', '')
+  return { day, month, weekday: formatter({ weekday: 'short' }).format(date) }
 }
 
 export function plural(count, one, few, many) {
   const value = Math.abs(Number(count)) % 100
   const last = value % 10
-  if (value > 10 && value < 20) return many
-  if (last > 1 && last < 5) return few
-  if (last === 1) return one
-  return many
+  if (value > 10 && value < 20) return t(many)
+  if (last > 1 && last < 5) return t(few)
+  if (last === 1) return t(one)
+  return t(many)
 }
 
 export const domainLabels = {

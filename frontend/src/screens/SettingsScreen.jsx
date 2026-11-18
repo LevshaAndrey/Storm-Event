@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Toggle } from '../components/Controls.jsx'
 import { Icon } from '../icons.jsx'
+import { LANGUAGES } from '../i18n.js'
 
 const themes = [
   { id: 'system', label: 'Система' },
@@ -103,6 +104,33 @@ export function SettingsScreen({
             checked={Boolean(settings.haptics)}
             onChange={(value) => onChange({ ...settings, haptics: value })}
           />
+        </div>
+
+        <div className="settings-section">
+          <div className="settings-title">
+            <Icon name="globe" size={17} /> Язык
+          </div>
+          <div className="language-grid" data-i18n-skip>
+            {LANGUAGES.map((language) => {
+              const active = (settings.language || 'ru') === language.id
+              return (
+                <button
+                  key={language.id}
+                  type="button"
+                  className={`language-option ${active ? 'is-active' : ''}`}
+                  aria-pressed={active}
+                  onClick={() => onChange({ ...settings, language: language.id })}
+                >
+                  <span className="language-code">{language.short}</span>
+                  <span className="language-name">{language.label}</span>
+                  {active ? <Icon name="check" size={15} /> : null}
+                </button>
+              )
+            })}
+          </div>
+          <small className="settings-note">
+            Интерфейс, даты и подсказки сразу на выбранном языке.
+          </small>
         </div>
 
         <div className="settings-section">

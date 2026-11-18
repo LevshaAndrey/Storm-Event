@@ -1,10 +1,16 @@
-import { sourceLabels, statusLabels } from '../format.js'
+import { plural, sourceLabels, statusLabels } from '../format.js'
 import { Icon } from '../icons.jsx'
 import { Sheet } from './Sheet.jsx'
 
 export function SourceSheet({ open, sources, onClose }) {
+  const count = sources?.length || 0
   return (
-    <Sheet open={open} onClose={onClose} title="Источники" subtitle={`${sources?.length || 0} сервисов`}>
+    <Sheet
+      open={open}
+      onClose={onClose}
+      title="Источники"
+      subtitle={`${count} ${plural(count, 'сервис', 'сервиса', 'сервисов')}`}
+    >
       <div className="source-list">
         <p className="settings-note">
           Поиск идёт параллельно по пяти источникам. Если один не ответил, остальные всё равно

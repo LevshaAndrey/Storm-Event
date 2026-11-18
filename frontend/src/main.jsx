@@ -2,11 +2,16 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './styles.css'
 import { applyTheme, loadSettings } from './settings.js'
+import { installTranslations, setLanguage } from './i18n.js'
 
-// Тема применяется до первой отрисовки, чтобы не было вспышки неправильного фона.
-applyTheme(loadSettings().theme)
+const initialSettings = loadSettings()
+
+// Тема и язык применяются до первой отрисовки, чтобы не было вспышки.
+applyTheme(initialSettings.theme)
+setLanguage(initialSettings.language)
 
 createRoot(document.getElementById('root')).render(<App />)
+installTranslations()
 
 if ('serviceWorker' in navigator) {
   const state = { applyPending: false }

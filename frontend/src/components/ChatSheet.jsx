@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { api } from '../api.js'
 import { haptic } from '../haptics.js'
+import { getLocale, t } from '../i18n.js'
 import { Icon } from '../icons.jsx'
 import { getSpeechRecognition } from '../voice.js'
 import { Sheet } from './Sheet.jsx'
@@ -111,7 +112,7 @@ export function ChatSheet({ open, onClose, userId, onResult, onOpenResults, onNo
       return
     }
     const recognition = new Recognition()
-    recognition.lang = 'ru-RU'
+    recognition.lang = getLocale()
     recognition.interimResults = false
     recognition.maxAlternatives = 1
     recognition.onresult = (event) => {
@@ -149,7 +150,7 @@ export function ChatSheet({ open, onClose, userId, onResult, onOpenResults, onNo
                     }}
                   >
                     <Icon name="route" size={15} />
-                    {resultCount ? `Показать результат · ${resultCount}` : 'Открыть результат'}
+                    {resultCount ? `${t('Показать результат')} · ${resultCount}` : t('Открыть результат')}
                   </button>
                 ) : null}
               </div>

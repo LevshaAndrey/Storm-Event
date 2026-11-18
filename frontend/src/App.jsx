@@ -14,6 +14,7 @@ import { ResultsScreen } from './screens/ResultsScreen.jsx'
 import { SettingsScreen } from './screens/SettingsScreen.jsx'
 import { SplashScreen } from './components/SplashScreen.jsx'
 import { addDays, formatPrice, localISO, nextWeekend } from './format.js'
+import { getLanguage, setLanguage, t } from './i18n.js'
 import { applyTheme, loadSettings, saveSettings } from './settings.js'
 import { currentPermission, requestPushPermission, showPush } from './notifications.js'
 import {
@@ -30,6 +31,16 @@ const FORM_KEY = 'storm-trip.form.v1'
 const EVENT_KEY = 'storm-trip.event.v1'
 const USER_KEY = 'storm-trip.user.v1'
 const ONBOARD_KEY = 'storm-trip.onboarded.v1'
+const TAB_KEY = 'storm-trip.tab.v1'
+
+function initialTab() {
+  try {
+    const stored = window.sessionStorage.getItem(TAB_KEY)
+    return ['search', 'events', 'trips', 'settings'].includes(stored) ? stored : 'search'
+  } catch {
+    return 'search'
+  }
+}
 
 const fallbackCategories = [
   { id: '/bilety-na-koncert/', label: 'Концерты' },
@@ -141,7 +152,7 @@ function payload(form, userId) {
 }
 
 export default function App() {
-  const [tab, setTab] = useState('search')
+  const [tab, setTab] = useState(initialTab)
   const [form, setForm] = useState(loadForm)
   const [selectedEvent, setSelectedEvent] = useState(loadEvent)
   const [categories, setCategories] = useState(fallbackCategories)
@@ -169,6 +180,21 @@ export default function App() {
   useEffect(() => {
     saveSettings(settings)
   }, [settings])
+
+  useEffect(() => {
+    try {
+      window.sessionStorage.setItem(TAB_KEY, tab)
+    } catch {
+      /* storage may be unavailable */
+    }
+  }, [tab])
+
+  useEffect(() => {
+    const next = settings.language || 'ru'
+    if (next === getLanguage()) return
+    setLanguage(next)
+    window.location.reload()
+  }, [settings.language])
 
   useEffect(() => {
     configureHaptics(settings.haptics)
@@ -275,14 +301,17 @@ export default function App() {
       if (permission !== 'granted') {
         notify(
           permission === 'unsupported'
-            ? 'Браузер не поддерживает уведомления.'
-            : 'Разрешение на уведомления не выдано.',
+            ? t('Браузер не поддерживает уведомления.')
+            : t('Разрешение на уведомления не выдано.'),
           'error'
         )
         return
       }
       updateSettings({ pushEnabled: true })
-      showPush('Storm Trip', 'Уведомления включены — сообщим, когда соберём маршрут.')
+      showPush(
+        'Storm Trip',
+        t('Уведомления включены — сообщим, когда соберём маршрут.')
+      )
     },
     [notify, updateSettings]
   )
@@ -291,11 +320,14 @@ export default function App() {
     const permission = await requestPushPermission()
     setPushPermission(permission)
     if (permission !== 'granted') {
-      notify('Разрешение на уведомления не выдано.', 'error')
+      notify(t('Разрешение на уведомления не выдано.'), 'error')
       return
     }
-    const shown = await showPush('Storm Trip работает', 'Так придёт сигнал, когда поиск соберёт маршрут.')
-    if (shown) notify('Тестовое уведомление отправлено')
+    const shown = await showPush(
+      t('Storm Trip работает'),
+      t('Так придёт сигнал, когда поиск соберёт маршрут.')
+    )
+    if (shown) notify(t('Тестовое уведомление отправлено'))
   }, [notify])
 
   const rememberTrip = useCallback((tripForm, tripResult) => {
@@ -328,21 +360,21 @@ export default function App() {
           setResult(data.result)
           rememberTrip(nextForm, data.result)
           if (!data.result.offers?.length && !data.result.combinations?.length) {
-            notify('Источники не вернули предложений. Попробуйте изменить даты.', 'info')
+            notify(t('Источники не вернули предложений. Попробуйте изменить даты.'), 'info')
           }
           if (settings.pushEnabled && settings.pushOnResults && document.hidden) {
             showPush(
-              'Маршрут собран',
-              `${nextForm.from} → ${nextForm.to}: предложений ${data.result.offers?.length || 0}, готовых вариантов ${data.result.combinations?.length || 0}.`
+              t('Маршрут собран'),
+              `${nextForm.from} → ${nextForm.to}: ${t('предложений')} ${data.result.offers?.length || 0}, ${t('готовых вариантов')} ${data.result.combinations?.length || 0}.`
             )
           }
         } else {
-          const message = data?.reply || 'Не удалось собрать поездку.'
+          const message = data?.reply || t('Не удалось собрать поездку.')
           setError(message)
           notify(message, 'error')
         }
       } catch (reason) {
-        const message = reason.message || 'Сервис поиска недоступен.'
+        const message = reason.message || t('Сервис поиска недоступен.')
         setError(message)
         notify(message, 'error')
       } finally {
@@ -383,10 +415,10 @@ export default function App() {
           eventCategories: pick.category?.startsWith('/') ? [pick.category] : []
         }
         setSelectedEvent(pick)
-        notify(`Выходные: ${pick.title}`)
+        notify(`${t('Выходные:')} ${pick.title}`)
       } else {
         nextForm = { ...form, dateFrom: weekend.from, dateTo: weekend.to }
-        notify('Афиша недоступна — собираем выходные по вашему маршруту.', 'info')
+        notify(t('Афиша недоступна — собираем выходные по вашему маршруту.'), 'info')
       }
 
       setLoading(false)
@@ -394,7 +426,7 @@ export default function App() {
     } catch {
       setLoading(false)
       setTab('search')
-      notify('Не удалось собрать выходные. Попробуйте ещё раз.', 'error')
+      notify(t('Не удалось собрать выходные. Попробуйте ещё раз.'), 'error')
     }
   }, [form, notify, runSearch])
 
@@ -430,7 +462,7 @@ export default function App() {
     (id) => {
       setHistory((current) => removeHistoryEntry(current, id))
       haptic(6)
-      notify('Поездка удалена из истории')
+      notify(t('Поездка удалена из истории'))
     },
     [notify]
   )
@@ -438,7 +470,7 @@ export default function App() {
   const clearHistory = useCallback(() => {
     setHistory([])
     haptic(12)
-    notify('История поездок очищена')
+    notify(t('История поездок очищена'))
   }, [notify])
 
   const adjustSearch = useCallback((patch) => runSearch(patch), [runSearch])
@@ -475,7 +507,7 @@ export default function App() {
     })
 
     haptic(8)
-    notify('Событие добавлено в маршрут')
+    notify(t('Событие добавлено в маршрут'))
     setTab('search')
     window.scrollTo(0, 0)
   }
@@ -513,7 +545,7 @@ export default function App() {
 
   const combinationTitle = useMemo(() => {
     if (!selectedCombination) return ''
-    return selectedCombination.offers?.find((offer) => offer.title)?.title || 'Вариант поездки'
+    return selectedCombination.offers?.find((offer) => offer.title)?.title || t('Вариант поездки')
   }, [selectedCombination])
 
   return (

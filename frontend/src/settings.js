@@ -2,6 +2,7 @@ export const SETTINGS_KEY = 'storm-trip.settings.v1'
 
 export const defaultSettings = {
   theme: 'dark',
+  language: 'ru',
   haptics: true,
   pushEnabled: false,
   pushOnResults: true

@@ -31,7 +31,8 @@ function Find-Adb {
         (Join-Path $env:LOCALAPPDATA 'Android\Sdk\platform-tools\adb.exe'),
         (Join-Path $env:USERPROFILE 'AppData\Local\Android\Sdk\platform-tools\adb.exe'),
         'C:\Android\platform-tools\adb.exe',
-        'C:\Program Files\Android\platform-tools\adb.exe'
+        'C:\Program Files\Android\platform-tools\adb.exe',
+        'C:\Program Files (x86)\Android\android-sdk\platform-tools\adb.exe'
     )
 
     foreach ($candidate in $candidates) {

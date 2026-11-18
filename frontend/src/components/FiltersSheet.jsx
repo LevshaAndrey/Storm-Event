@@ -1,4 +1,5 @@
 import { Toggle } from './Controls.jsx'
+import { plural } from '../format.js'
 import { Icon } from '../icons.jsx'
 import { Sheet } from './Sheet.jsx'
 
@@ -26,7 +27,7 @@ export function FiltersSheet({ open, filters, onChange, onClose, onReset }) {
       open={open}
       onClose={onClose}
       title="Фильтры"
-      subtitle={active ? `активно ${active}` : 'все варианты'}
+      subtitle={active ? `${active} ${plural(active, 'фильтр', 'фильтра', 'фильтров')}` : 'все варианты'}
     >
       <div className="filters-sheet">
         <label className="field">

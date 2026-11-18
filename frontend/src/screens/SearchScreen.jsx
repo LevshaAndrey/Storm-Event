@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Autocomplete } from '../components/Autocomplete.jsx'
 import { Stepper, Toggle } from '../components/Controls.jsx'
+import { DateField } from '../components/DatePicker.jsx'
 import { Icon } from '../icons.jsx'
 import { addDays, dateRangeLabel, eventDate, localISO, nextWeekend, todayISO } from '../format.js'
 
@@ -164,33 +165,29 @@ export function SearchScreen({
         </div>
 
         <div className="form-row">
-          <label className="field" htmlFor="dateFrom">
-            <span className="field-label">Туда</span>
-            <span className="input-wrap">
-              <input
-                id="dateFrom"
-                className="input"
-                type="date"
-                min={todayISO()}
-                value={form.dateFrom || ''}
-                onChange={(event) => patch({ dateFrom: event.target.value })}
-                required
-              />
-            </span>
-          </label>
-          <label className="field" htmlFor="dateTo">
-            <span className="field-label">Обратно</span>
-            <span className="input-wrap">
-              <input
-                id="dateTo"
-                className="input"
-                type="date"
-                min={form.dateFrom || todayISO()}
-                value={form.dateTo || ''}
-                onChange={(event) => patch({ dateTo: event.target.value })}
-              />
-            </span>
-          </label>
+          <DateField
+            id="dateFrom"
+            label="Туда"
+            value={form.dateFrom}
+            min={todayISO()}
+            onChange={(value) =>
+              patch({
+                dateFrom: value,
+                dateTo: form.dateTo && form.dateTo < value ? value : form.dateTo
+              })
+            }
+          />
+          <DateField
+            id="dateTo"
+            label="Обратно"
+            value={form.dateTo}
+            min={form.dateFrom || todayISO()}
+            rangeStart={form.dateFrom}
+            rangeEnd={form.dateTo}
+            onChange={(value) => patch({ dateTo: value })}
+            onClear={() => patch({ dateTo: '' })}
+            clearLabel="Только туда"
+          />
         </div>
 
         <div className="form-row passengers-row">
