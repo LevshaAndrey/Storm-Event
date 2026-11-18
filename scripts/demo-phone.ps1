@@ -40,7 +40,32 @@ function Find-Adb {
         }
     }
 
+    # winget installs Platform Tools into a versioned package folder.
+    $wingetRoot = Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages'
+    if (Test-Path $wingetRoot) {
+        $package = Get-ChildItem $wingetRoot -Directory -Filter 'Google.PlatformTools_*' -ErrorAction SilentlyContinue |
+            Select-Object -First 1
+        if ($package) {
+            $candidate = Join-Path $package.FullName 'platform-tools\adb.exe'
+            if (Test-Path $candidate) {
+                return $candidate
+            }
+        }
+    }
+
     return $null
+}
+
+function Test-PortFree {
+    param([int]$Port)
+
+    try {
+        $listener = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction Stop
+        return -not $listener
+    } catch {
+        # No listener found or the cmdlet is unavailable; let Docker report a real conflict.
+        return $true
+    }
 }
 
 function Get-LanIp {
@@ -79,6 +104,26 @@ Write-Host ''
 Write-Host '  Storm Trip - phone demo' -ForegroundColor Cyan
 Write-Host '  ------------------------' -ForegroundColor DarkCyan
 Write-Host ''
+
+$backendPort = $env:BACKEND_PORT
+if (-not $backendPort) {
+    $existingPort = docker compose port backend 8080 2>$null
+    if ($LASTEXITCODE -eq 0 -and $existingPort -match ':(\d+)\s*$') {
+        $backendPort = $Matches[1]
+    }
+}
+
+if (-not $backendPort) {
+    $backendPort = '8080'
+    if (-not (Test-PortFree 8080)) {
+        $freePort = 8091..8105 | Where-Object { Test-PortFree $_ } | Select-Object -First 1
+        if ($freePort) {
+            $backendPort = [string]$freePort
+            Write-Host "Port 8080 is busy; using $backendPort for the backend host port." -ForegroundColor DarkYellow
+        }
+    }
+}
+$env:BACKEND_PORT = $backendPort
 
 if ($SkipBuild) {
     Write-Host 'Starting containers (no rebuild)...'
@@ -157,7 +202,7 @@ if (-not $deviceLines) {
 $model = (& $adb shell getprop ro.product.model).Trim()
 Write-Host "Device connected: $model" -ForegroundColor Green
 
-& $adb reverse "tcp:$port" "tcp:$port"
+& $adb reverse "tcp:$port" "tcp:$port" | Out-Null
 if ($LASTEXITCODE -ne 0) {
     throw "adb reverse failed. Reconnect the phone and retry."
 }
@@ -169,3 +214,4 @@ if (-not $NoLaunch) {
 Write-Host ''
 Write-Host "Phone is ready: $url" -ForegroundColor Green
 Write-Host 'Chrome -> menu -> "Add to Home screen" to run it without the address bar.'
+exit 0
