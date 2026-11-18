@@ -1,14 +1,33 @@
+import { useState } from 'react'
+import { Toggle } from '../components/Controls.jsx'
 import { Icon } from '../icons.jsx'
 
-export function SettingsScreen({ settings, onChange, permission, onSetPush, onTestPush }) {
-  const isDark = settings.theme === 'dark'
+const themes = [
+  { id: 'system', label: 'Система' },
+  { id: 'light', label: 'Светлая' },
+  { id: 'dark', label: 'Тёмная' }
+]
+
+export function SettingsScreen({
+  settings,
+  onChange,
+  permission,
+  onSetPush,
+  onTestPush,
+  historyCount = 0,
+  onClearHistory,
+  onReplayOnboarding
+}) {
+  const [confirmClear, setConfirmClear] = useState(false)
+  const theme = settings.theme || 'dark'
+  const themeIcon = theme === 'light' ? 'sun' : theme === 'system' ? 'tune' : 'moon'
 
   return (
     <div className="screen">
       <div className="screen-head">
         <span className="eyebrow">Storm Trip</span>
         <h1>Настройки</h1>
-        <p>Уведомления, оформление и информация о приложении.</p>
+        <p>Уведомления, оформление, история и информация о приложении.</p>
       </div>
 
       <div className="card settings-card">
@@ -61,17 +80,71 @@ export function SettingsScreen({ settings, onChange, permission, onSetPush, onTe
 
         <div className="settings-section">
           <div className="settings-title">
-            <Icon name={isDark ? 'moon' : 'sun'} size={17} /> Оформление
+            <Icon name={themeIcon} size={17} /> Оформление
           </div>
           <div className="segmented">
-            <button type="button" className={!isDark ? 'is-active' : ''} onClick={() => onChange({ ...settings, theme: 'light' })}>
-              Светлая
+            {themes.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                className={theme === option.id ? 'is-active' : ''}
+                onClick={() => onChange({ ...settings, theme: option.id })}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+          <small className="settings-note">
+            «Система» повторяет тему телефона. Выбор применяется сразу и запоминается на устройстве.
+          </small>
+          <Toggle
+            label="Вибрация"
+            hint="Короткий отклик при выборе вариантов и запуске поиска"
+            checked={Boolean(settings.haptics)}
+            onChange={(value) => onChange({ ...settings, haptics: value })}
+          />
+        </div>
+
+        <div className="settings-section">
+          <div className="settings-title">
+            <Icon name="clock" size={17} /> Данные на устройстве
+          </div>
+          <div className="info-list">
+            <div className="info-row">
+              <small>Поездок в истории</small>
+              <b>{historyCount}</b>
+            </div>
+            <div className="info-row">
+              <small>Хранение</small>
+              <b>только этот браузер</b>
+            </div>
+          </div>
+          <small className="settings-note">
+            История не отправляется на сервер и переживает перезапуск приложения. Можно очистить её в любой момент.
+          </small>
+          <div className="settings-actions">
+            <button
+              type="button"
+              className={`btn btn-small ${confirmClear ? 'btn-danger' : 'btn-dark'}`}
+              disabled={!historyCount}
+              onClick={() => {
+                if (!historyCount) return
+                if (confirmClear) {
+                  onClearHistory?.()
+                  setConfirmClear(false)
+                } else {
+                  setConfirmClear(true)
+                  window.setTimeout(() => setConfirmClear(false), 3400)
+                }
+              }}
+            >
+              <Icon name="trash" size={15} />
+              {confirmClear ? 'Точно очистить?' : 'Очистить историю'}
             </button>
-            <button type="button" className={isDark ? 'is-active' : ''} onClick={() => onChange({ ...settings, theme: 'dark' })}>
-              Тёмная
+            <button type="button" className="btn btn-soft btn-small" onClick={onReplayOnboarding}>
+              <Icon name="spark" size={15} /> Показать знакомство
             </button>
           </div>
-          <small className="settings-note">Тема применяется сразу и запоминается на устройстве.</small>
         </div>
 
         <div className="settings-section">
@@ -81,7 +154,7 @@ export function SettingsScreen({ settings, onChange, permission, onSetPush, onTe
           <div className="info-list">
             <div className="info-row">
               <small>Версия</small>
-              <b>1.1.0</b>
+              <b>1.2.0</b>
             </div>
             <div className="info-row">
               <small>Клиент</small>

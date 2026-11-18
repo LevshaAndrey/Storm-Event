@@ -2,6 +2,9 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { api } from './api.js'
 import { BottomNav } from './components/BottomNav.jsx'
 import { CombinationDetails } from './components/cards.jsx'
+import { ChatSheet } from './components/ChatSheet.jsx'
+import { InstallBanner } from './components/InstallBanner.jsx'
+import { Onboarding } from './components/Onboarding.jsx'
 import { Sheet } from './components/Sheet.jsx'
 import { Toast } from './components/Toast.jsx'
 import { Icon, Logo } from './icons.jsx'
@@ -13,10 +16,20 @@ import { SplashScreen } from './components/SplashScreen.jsx'
 import { addDays, formatPrice, localISO, nextWeekend } from './format.js'
 import { applyTheme, loadSettings, saveSettings } from './settings.js'
 import { currentPermission, requestPushPermission, showPush } from './notifications.js'
+import {
+  createHistoryEntry,
+  loadHistory,
+  mergeHistory,
+  removeHistoryEntry,
+  saveHistory
+} from './history.js'
+import { configureHaptics, haptic } from './haptics.js'
+import { formFromIntent } from './intent.js'
 
 const FORM_KEY = 'storm-trip.form.v1'
 const EVENT_KEY = 'storm-trip.event.v1'
 const USER_KEY = 'storm-trip.user.v1'
+const ONBOARD_KEY = 'storm-trip.onboarded.v1'
 
 const fallbackCategories = [
   { id: '/bilety-na-koncert/', label: 'Концерты' },
@@ -68,6 +81,14 @@ function loadEvent() {
     return stored ? JSON.parse(stored) : null
   } catch {
     return null
+  }
+}
+
+function shouldOnboard() {
+  try {
+    return window.localStorage.getItem(ONBOARD_KEY) !== '1'
+  } catch {
+    return false
   }
 }
 
@@ -135,14 +156,36 @@ export default function App() {
   const [pushPermission, setPushPermission] = useState(currentPermission)
   const [booting, setBooting] = useState(true)
   const [splashLeaving, setSplashLeaving] = useState(false)
+  const [history, setHistory] = useState(loadHistory)
+  const [chatOpen, setChatOpen] = useState(false)
+  const [onboarding, setOnboarding] = useState(shouldOnboard)
+  const [updateReady, setUpdateReady] = useState(null)
+
+  const passengers = useMemo(
+    () => (Number(form.adults) || 1) + (Number(form.children) || 0),
+    [form.adults, form.children]
+  )
 
   useEffect(() => {
     saveSettings(settings)
   }, [settings])
 
   useEffect(() => {
+    configureHaptics(settings.haptics)
+  }, [settings.haptics])
+
+  useEffect(() => {
     applyTheme(settings.theme)
+    if (settings.theme !== 'system' || !window.matchMedia) return undefined
+    const media = window.matchMedia('(prefers-color-scheme: light)')
+    const onChange = () => applyTheme('system')
+    media.addEventListener?.('change', onChange)
+    return () => media.removeEventListener?.('change', onChange)
   }, [settings.theme])
+
+  useEffect(() => {
+    saveHistory(history)
+  }, [history])
 
   useEffect(() => {
     const t1 = setTimeout(() => setSplashLeaving(true), 1500)
@@ -196,6 +239,12 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    const onSwUpdate = (event) => setUpdateReady(event.detail || null)
+    window.addEventListener('storm-sw-update', onSwUpdate)
+    return () => window.removeEventListener('storm-sw-update', onSwUpdate)
+  }, [])
+
+  useEffect(() => {
     window.scrollTo(0, 0)
   }, [tab])
 
@@ -208,6 +257,11 @@ export default function App() {
 
   const updateSettings = useCallback((patch) => {
     setSettings((current) => ({ ...current, ...patch }))
+  }, [])
+
+  const changeTab = useCallback((next) => {
+    haptic(6)
+    setTab(next)
   }, [])
 
   const setPush = useCallback(
@@ -244,45 +298,155 @@ export default function App() {
     if (shown) notify('Тестовое уведомление отправлено')
   }, [notify])
 
-  async function runSearch() {
-    const problem = validate(form)
-    if (problem) {
-      notify(problem, 'error')
-      setTab('search')
-      return
-    }
+  const rememberTrip = useCallback((tripForm, tripResult) => {
+    if (!tripResult) return
+    const entry = createHistoryEntry(tripForm, tripResult)
+    setHistory((current) => mergeHistory(current, entry))
+  }, [])
 
-    setLoading(true)
-    setError('')
-    setResult(null)
-    setTab('trips')
+  const runSearch = useCallback(
+    async (override) => {
+      const nextForm = override ? { ...form, ...override } : form
+      if (override) setForm(nextForm)
 
-    try {
-      const data = await api.search(payload(form, userId))
-      if (data?.result) {
-        setResult(data.result)
-        if (!data.result.offers?.length && !data.result.combinations?.length) {
-          notify('Источники не вернули предложений. Попробуйте изменить даты.', 'info')
+      const problem = validate(nextForm)
+      if (problem) {
+        notify(problem, 'error')
+        setTab('search')
+        return
+      }
+
+      haptic(14)
+      setLoading(true)
+      setError('')
+      setResult(null)
+      setTab('trips')
+
+      try {
+        const data = await api.search(payload(nextForm, userId))
+        if (data?.result) {
+          setResult(data.result)
+          rememberTrip(nextForm, data.result)
+          if (!data.result.offers?.length && !data.result.combinations?.length) {
+            notify('Источники не вернули предложений. Попробуйте изменить даты.', 'info')
+          }
+          if (settings.pushEnabled && settings.pushOnResults && document.hidden) {
+            showPush(
+              'Маршрут собран',
+              `${nextForm.from} → ${nextForm.to}: предложений ${data.result.offers?.length || 0}, готовых вариантов ${data.result.combinations?.length || 0}.`
+            )
+          }
+        } else {
+          const message = data?.reply || 'Не удалось собрать поездку.'
+          setError(message)
+          notify(message, 'error')
         }
-        if (settings.pushEnabled && settings.pushOnResults && document.hidden) {
-          showPush(
-            'Маршрут собран',
-            `${form.from} → ${form.to}: предложений ${data.result.offers?.length || 0}, готовых вариантов ${data.result.combinations?.length || 0}.`
-          )
-        }
-      } else {
-        const message = data?.reply || 'Не удалось собрать поездку.'
+      } catch (reason) {
+        const message = reason.message || 'Сервис поиска недоступен.'
         setError(message)
         notify(message, 'error')
+      } finally {
+        setLoading(false)
+        haptic(10)
       }
-    } catch (reason) {
-      const message = reason.message || 'Сервис поиска недоступен.'
-      setError(message)
-      notify(message, 'error')
-    } finally {
+    },
+    [form, userId, settings.pushEnabled, settings.pushOnResults, notify, rememberTrip]
+  )
+
+  const planWeekend = useCallback(async () => {
+    setLoading(true)
+    setError('')
+    setTab('trips')
+    haptic(14)
+
+    try {
+      const data = await api.events({ limit: 12 })
+      const list = Array.isArray(data?.events) ? data.events : []
+      const withPlace = list.filter((event) => event?.start && event?.venueLocality)
+      const pool = withPlace.length ? withPlace : list.filter((event) => event?.start)
+      const pick = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null
+      const weekend = nextWeekend()
+
+      let nextForm
+      if (pick) {
+        const day = localISO(new Date(pick.start))
+        nextForm = {
+          ...form,
+          to: pick.venueLocality || form.to,
+          toId: null,
+          dateFrom: day,
+          dateTo: localISO(addDays(new Date(`${day}T12:00:00`), 1)),
+          eventVenue: pick.venue?.name || '',
+          eventCity: pick.venueLocality || '',
+          eventRegion: pick.venueRegion || '',
+          eventCountry: pick.venueCountry || '',
+          eventCategories: pick.category?.startsWith('/') ? [pick.category] : []
+        }
+        setSelectedEvent(pick)
+        notify(`Выходные: ${pick.title}`)
+      } else {
+        nextForm = { ...form, dateFrom: weekend.from, dateTo: weekend.to }
+        notify('Афиша недоступна — собираем выходные по вашему маршруту.', 'info')
+      }
+
       setLoading(false)
+      await runSearch(nextForm)
+    } catch {
+      setLoading(false)
+      setTab('search')
+      notify('Не удалось собрать выходные. Попробуйте ещё раз.', 'error')
     }
-  }
+  }, [form, notify, runSearch])
+
+  const applyChatResult = useCallback(
+    (nextResult, intent) => {
+      if (!nextResult) return
+      const nextForm = intent ? formFromIntent(intent, form) : form
+      setForm(nextForm)
+      setResult(nextResult)
+      setError('')
+      setTab('trips')
+      rememberTrip(nextForm, nextResult)
+      haptic(14)
+    },
+    [form, rememberTrip]
+  )
+
+  const openHistoryEntry = useCallback(
+    (entry) => {
+      if (!entry) return
+      setForm({ ...initialForm(), ...entry.form })
+      setSelectedEvent(null)
+      setResult(entry.result)
+      setError('')
+      setTab('trips')
+      haptic(8)
+      window.scrollTo(0, 0)
+    },
+    []
+  )
+
+  const deleteHistory = useCallback(
+    (id) => {
+      setHistory((current) => removeHistoryEntry(current, id))
+      haptic(6)
+      notify('Поездка удалена из истории')
+    },
+    [notify]
+  )
+
+  const clearHistory = useCallback(() => {
+    setHistory([])
+    haptic(12)
+    notify('История поездок очищена')
+  }, [notify])
+
+  const adjustSearch = useCallback((patch) => runSearch(patch), [runSearch])
+
+  const changeSort = useCallback((sort) => {
+    setForm((current) => ({ ...current, sort }))
+    haptic(5)
+  }, [])
 
   function chooseEvent(event) {
     setSelectedEvent(event)
@@ -310,6 +474,7 @@ export default function App() {
       }
     })
 
+    haptic(8)
     notify('Событие добавлено в маршрут')
     setTab('search')
     window.scrollTo(0, 0)
@@ -326,6 +491,26 @@ export default function App() {
     }))
   }
 
+  const finishOnboarding = useCallback(() => {
+    setOnboarding(false)
+    try {
+      window.localStorage.setItem(ONBOARD_KEY, '1')
+    } catch {
+      /* storage may be unavailable */
+    }
+    setTab('search')
+    haptic(8)
+  }, [])
+
+  const applyUpdate = useCallback(() => {
+    try {
+      updateReady?.apply?.()
+    } catch {
+      window.location.reload()
+    }
+    setUpdateReady(null)
+  }, [updateReady])
+
   const combinationTitle = useMemo(() => {
     if (!selectedCombination) return ''
     return selectedCombination.offers?.find((offer) => offer.title)?.title || 'Вариант поездки'
@@ -334,7 +519,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <button className="brand" type="button" onClick={() => setTab('search')} aria-label="Storm Trip — на главную">
+        <button className="brand" type="button" onClick={() => changeTab('search')} aria-label="Storm Trip — на главную">
           <Logo />
           <span className="brand-copy">
             <b>Storm Trip</b>
@@ -343,7 +528,7 @@ export default function App() {
         <button
           className={`icon-button topbar-action ${tab === 'events' ? 'is-active' : ''}`}
           type="button"
-          onClick={() => setTab('events')}
+          onClick={() => changeTab('events')}
           aria-label="Открыть афишу"
         >
           <Icon name="ticket" size={20} />
@@ -364,7 +549,11 @@ export default function App() {
             selectedEvent={selectedEvent}
             onClearEvent={clearEvent}
             onSubmit={runSearch}
-            onOpenEvents={() => setTab('events')}
+            onOpenEvents={() => changeTab('events')}
+            onOpenChat={() => setChatOpen(true)}
+            onPlanWeekend={planWeekend}
+            history={history}
+            onOpenHistory={openHistoryEntry}
             categories={categories}
             loading={loading}
           />
@@ -375,6 +564,7 @@ export default function App() {
             categories={categories}
             selectedEvent={selectedEvent}
             onSelectEvent={chooseEvent}
+            onNotify={notify}
           />
         ) : null}
 
@@ -384,8 +574,17 @@ export default function App() {
             loading={loading}
             error={error}
             form={form}
-            onEdit={() => setTab('search')}
+            history={history}
+            categories={categories}
+            onEdit={() => changeTab('search')}
             onSelectCombination={setSelectedCombination}
+            onOpenHistory={openHistoryEntry}
+            onDeleteHistory={deleteHistory}
+            onClearHistory={clearHistory}
+            onAdjust={adjustSearch}
+            onNotify={notify}
+            onOpenChat={() => setChatOpen(true)}
+            onSortChange={changeSort}
           />
         ) : null}
 
@@ -396,11 +595,14 @@ export default function App() {
             permission={pushPermission}
             onSetPush={setPush}
             onTestPush={testPush}
+            historyCount={history.length}
+            onClearHistory={clearHistory}
+            onReplayOnboarding={() => setOnboarding(true)}
           />
         ) : null}
       </main>
 
-      <BottomNav active={tab} onChange={setTab} badge={result?.combinations?.length || null} />
+      <BottomNav active={tab} onChange={changeTab} badge={result?.combinations?.length || null} />
 
       <Sheet
         open={Boolean(selectedCombination)}
@@ -408,12 +610,54 @@ export default function App() {
         subtitle={selectedCombination ? formatPrice(selectedCombination.totalPrice) : undefined}
         title={combinationTitle}
       >
-        {selectedCombination ? <CombinationDetails combination={selectedCombination} /> : null}
+        {selectedCombination ? (
+          <CombinationDetails
+            combination={selectedCombination}
+            passengers={passengers}
+            onNotify={notify}
+          />
+        ) : null}
       </Sheet>
+
+      <ChatSheet
+        open={chatOpen}
+        onClose={() => setChatOpen(false)}
+        userId={userId}
+        onResult={applyChatResult}
+        onOpenResults={() => changeTab('trips')}
+        onNotify={notify}
+      />
 
       <Toast toast={toast} onClose={closeToast} />
 
       {booting ? <SplashScreen leaving={splashLeaving} /> : null}
+
+      {!booting && onboarding ? <Onboarding open onDone={finishOnboarding} /> : null}
+
+      {!booting && !onboarding ? (
+        updateReady ? (
+          <div className="install-banner update-banner">
+            <span className="install-icon"><Icon name="refresh" size={18} /></span>
+            <div>
+              <b>Доступно обновление</b>
+              <small>Перезагрузите, чтобы получить новую версию</small>
+            </div>
+            <button type="button" className="btn btn-soft btn-small" onClick={applyUpdate}>
+              Обновить
+            </button>
+            <button
+              type="button"
+              className="install-close"
+              onClick={() => setUpdateReady(null)}
+              aria-label="Скрыть"
+            >
+              <Icon name="x" size={14} />
+            </button>
+          </div>
+        ) : (
+          <InstallBanner />
+        )
+      ) : null}
     </div>
   )
 }

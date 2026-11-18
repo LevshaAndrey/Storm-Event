@@ -1,5 +1,14 @@
 import { useState } from 'react'
+import { haptic } from '../haptics.js'
 import { Icon } from '../icons.jsx'
+import {
+  combinationShareText,
+  combinationToICS,
+  downloadICS,
+  itineraryShareText,
+  itineraryToICS,
+  shareOrCopy
+} from '../share.js'
 import {
   domainLabels,
   formatDate,
@@ -13,37 +22,50 @@ import {
 } from '../format.js'
 
 export function OfferRow({ offer, showLink = true }) {
+  const [broken, setBroken] = useState(false)
   const type = offerType(offer)
   const price = formatPrice(offer?.price)
   const url = offer?.url
+  const source = sourceLabels[offer?.source] || offer?.source
   let icon = 'ticket'
   let title = offer?.title || 'Предложение'
   let meta = []
+  let thumb = null
 
   if (type === 'transport') {
     icon = offer.domain === 'TRAIN' ? 'train' : 'bus'
     title = offer.title || `${offer.from?.name || '—'} → ${offer.to?.name || '—'}`
     meta = [
       `${formatDate(offer.departure)} · ${formatTime(offer.departure)} → ${formatTime(offer.arrival)}`,
-      offer.direct ? 'без пересадок' : 'с пересадками'
+      offer.direct ? 'без пересадок' : 'с пересадками',
+      source
     ]
   } else if (type === 'hotel') {
     icon = 'hotel'
-    meta = [
-      offer.location?.name,
-      offer.rating ? `${offer.rating}★` : null
-    ]
+    meta = [offer.location?.name, offer.rating ? `${offer.rating}★` : null, source]
   } else {
     icon = 'ticket'
     meta = [
-      `${formatDateLong(offer.start)}${offer.start ? ` · ${formatTime(offer.start)}` : ''}`,
-      [offer.venue?.name, offer.venueLocality].filter(Boolean).join(', ')
+      `${formatDateLong(offer.start)} · ${formatTime(offer.start)}${offer.end ? `–${formatTime(offer.end)}` : ''}`,
+      [offer.venue?.name, offer.venueLocality].filter(Boolean).join(', '),
+      source
     ]
+    if (offer.imageUrl && !broken) {
+      thumb = (
+        <img
+          className="offer-thumb"
+          src={offer.imageUrl}
+          alt=""
+          loading="lazy"
+          onError={() => setBroken(true)}
+        />
+      )
+    }
   }
 
   return (
     <div className="offer-row">
-      <span className={`offer-icon type-${type}`}><Icon name={icon} size={18} /></span>
+      {thumb || <span className={`offer-icon type-${type}`}><Icon name={icon} size={18} /></span>}
       <div className="offer-copy">
         <b>{title}</b>
         <small>{meta.filter(Boolean).join(' · ')}</small>
@@ -60,7 +82,7 @@ export function OfferRow({ offer, showLink = true }) {
   )
 }
 
-export function CombinationCard({ combination, onClick }) {
+export function CombinationCard({ combination, onClick, passengers = 1 }) {
   const offers = combination.offers || []
   const transport = offers.find((offer) => offerType(offer) === 'transport')
   const event = offers.find((offer) => offerType(offer) === 'event')
@@ -68,6 +90,7 @@ export function CombinationCard({ combination, onClick }) {
   const title = event?.title || hotel?.title || transport?.title || 'Вариант поездки'
   const price = formatPrice(combination.totalPrice)
   const score = Math.round((Number(combination.score) || 0) * 100)
+  const perPerson = Number(combination.totalPrice?.amount) / (Number(passengers) || 1)
 
   const composition = offers
     .map((offer) => {
@@ -91,7 +114,14 @@ export function CombinationCard({ combination, onClick }) {
   }
 
   return (
-    <button type="button" className="card combo-card" onClick={onClick}>
+    <button
+      type="button"
+      className="card combo-card"
+      onClick={() => {
+        haptic(6)
+        onClick?.()
+      }}
+    >
       <div className="combo-head">
         <span className="eyebrow">{composition}</span>
         <span className="score-pill" title="Оценка совместимости">{score}%</span>
@@ -100,11 +130,14 @@ export function CombinationCard({ combination, onClick }) {
       {meta.length ? <p className="combo-meta">{meta.join(' · ')}</p> : null}
       {combination.tags?.length ? (
         <div className="tag-row">
-          {combination.tags.slice(0, 3).map((tag) => <span key={tag} className="tag">{tag}</span>)}
+          {combination.tags.slice(0, 4).map((tag) => <span key={tag} className="tag">{tag}</span>)}
         </div>
       ) : null}
       <div className="combo-foot">
         <span className="price-label">итого</span>
+        {Number(passengers) > 1 && Number.isFinite(perPerson) ? (
+          <span className="per-person">≈ {Math.round(perPerson)} / чел.</span>
+        ) : null}
         <strong className="price">{price || '—'}</strong>
         <Icon name="chevronRight" size={18} />
       </div>
@@ -112,7 +145,7 @@ export function CombinationCard({ combination, onClick }) {
   )
 }
 
-export function ItineraryCard({ itinerary }) {
+export function ItineraryCard({ itinerary, onNotify }) {
   const [open, setOpen] = useState(false)
   const legs = itinerary.legs || []
   const first = legs[0]
@@ -121,6 +154,23 @@ export function ItineraryCard({ itinerary }) {
   const transfers = Number(itinerary.transfers) || 0
   const departure = first?.departure
   const arrival = last?.arrival
+  const score = Math.round((Number(itinerary.score) || 0) * 100)
+  const savings = itinerary.savings ? Number(itinerary.savings) : null
+  const distance = Number(itinerary.distanceKm)
+  const speed = distance > 0 && Number(itinerary.durationMinutes) > 0
+    ? Math.round(distance / (Number(itinerary.durationMinutes) / 60))
+    : null
+
+  async function share() {
+    const result = await shareOrCopy({ title: 'Маршрут Storm Trip', text: itineraryShareText(itinerary) })
+    if (result === 'copied') onNotify?.('Маршрут скопирован — можно отправить в мессенджер.')
+    if (result === 'failed') onNotify?.('Не удалось поделиться маршрутом.', 'error')
+  }
+
+  function calendar() {
+    const ok = downloadICS('storm-trip-route.ics', itineraryToICS(itinerary))
+    onNotify?.(ok ? 'Маршрут добавлен в календарь' : 'У маршрута нет времени отправления.', ok ? 'info' : 'error')
+  }
 
   return (
     <article className="card itinerary-card">
@@ -134,6 +184,7 @@ export function ItineraryCard({ itinerary }) {
         </span>
         <span className="itinerary-price">
           <strong>{price || '—'}</strong>
+          {score ? <span className="iti-score">{score}%</span> : null}
           <Icon name={open ? 'chevronDown' : 'chevronRight'} size={17} />
         </span>
       </button>
@@ -141,7 +192,11 @@ export function ItineraryCard({ itinerary }) {
       <div className="itinerary-meta">
         <span><Icon name="clock" size={14} />{formatDuration(itinerary.durationMinutes)}</span>
         <span>{transfers ? `${transfers} пересад.` : 'без пересадок'}</span>
-        {itinerary.distanceKm ? <span>{Math.round(itinerary.distanceKm)} км</span> : null}
+        {distance ? <span>{Math.round(distance)} км</span> : null}
+        {speed ? <span>≈ {speed} км/ч</span> : null}
+        {savings > 0 ? (
+          <span className="iti-savings">−{formatPrice({ amount: savings, currency: 'BYN' })}</span>
+        ) : null}
       </div>
 
       {open ? (
@@ -153,6 +208,10 @@ export function ItineraryCard({ itinerary }) {
                 <div className="leg-row">
                   <span>{formatTime(leg.departure)}</span>
                   <b>{leg.from?.name}</b>
+                  <em className="leg-domain">
+                    <Icon name={leg.domain === 'TRAIN' ? 'train' : 'bus'} size={12} />
+                    {domainLabels[leg.domain] || 'Транспорт'}
+                  </em>
                 </div>
                 <div className="leg-row">
                   <span>{formatTime(leg.arrival)}</span>
@@ -170,8 +229,8 @@ export function ItineraryCard({ itinerary }) {
               </div>
             </div>
           ))}
-          {itinerary.savings ? (
-            <p className="saving">Раздельные билеты дешевле прямого на {formatPrice({ amount: itinerary.savings, currency: 'BYN' })}</p>
+          {savings > 0 ? (
+            <p className="saving">Раздельные билеты дешевле прямого на {formatPrice({ amount: savings, currency: 'BYN' })}</p>
           ) : null}
           {itinerary.tags?.length ? (
             <div className="tag-row">
@@ -180,20 +239,47 @@ export function ItineraryCard({ itinerary }) {
           ) : null}
         </div>
       ) : null}
+
+      <div className="itinerary-actions">
+        <button type="button" className="share-btn" onClick={share}>
+          <Icon name="share" size={14} /> Поделиться
+        </button>
+        <button type="button" className="share-btn" onClick={calendar}>
+          <Icon name="calendarPlus" size={14} /> В календарь
+        </button>
+      </div>
     </article>
   )
 }
 
-export function CombinationDetails({ combination }) {
+export function CombinationDetails({ combination, passengers = 1, onNotify }) {
   const offers = combination.offers || []
   const transport = offers.find((offer) => offerType(offer) === 'transport')
   const event = offers.find((offer) => offerType(offer) === 'event')
+  const perPerson = Number(combination.totalPrice?.amount) / (Number(passengers) || 1)
+
+  async function share() {
+    const result = await shareOrCopy({
+      title: 'Вариант поездки Storm Trip',
+      text: combinationShareText(combination, passengers)
+    })
+    if (result === 'copied') onNotify?.('Вариант скопирован — можно отправить в мессенджер.')
+    if (result === 'failed') onNotify?.('Не удалось поделиться вариантом.', 'error')
+  }
+
+  function calendar() {
+    const ok = downloadICS('storm-trip-trip.ics', combinationToICS(combination))
+    onNotify?.(ok ? 'Поездка добавлена в календарь' : 'В варианте нет событий с датами.', ok ? 'info' : 'error')
+  }
 
   return (
     <div className="details">
       <div className="details-total">
         <span className="eyebrow">стоимость поездки</span>
         <strong>{formatPrice(combination.totalPrice) || '—'}</strong>
+        {Number(passengers) > 1 && Number.isFinite(perPerson) ? (
+          <span className="per-person">≈ {Math.round(perPerson)} BYN на человека</span>
+        ) : null}
         <span className="score-note">Оценка совместимости {Math.round((Number(combination.score) || 0) * 100)}%</span>
       </div>
 
@@ -217,6 +303,15 @@ export function CombinationDetails({ combination }) {
         </div>
       ) : null}
 
+      <div className="share-row details-actions">
+        <button type="button" className="btn btn-dark btn-small" onClick={share}>
+          <Icon name="share" size={16} /> Поделиться
+        </button>
+        <button type="button" className="btn btn-dark btn-small" onClick={calendar}>
+          <Icon name="calendarPlus" size={16} /> В календарь
+        </button>
+      </div>
+
       <div className="details-offers">
         {offers.map((offer, index) => <OfferRow key={offer.id || index} offer={offer} />)}
       </div>
@@ -224,20 +319,23 @@ export function CombinationDetails({ combination }) {
   )
 }
 
-export function SourceStrip({ sources }) {
+export function SourceStrip({ sources, onSelect }) {
   if (!sources?.length) return null
   return (
-    <div className="source-strip">
+    <div className="source-strip" role="list" aria-label="Статусы источников">
       {sources.map((source) => (
-        <span
+        <button
           key={source.source}
+          type="button"
+          role="listitem"
           className={`source-chip status-${(source.status || 'EMPTY').toLowerCase()}`}
           title={source.error || statusLabels[source.status] || ''}
+          onClick={() => onSelect?.(source)}
         >
           <i className="dot" />
           {sourceLabels[source.source] || source.source}
           {source.status === 'SUCCESS' ? <b>{source.resultCount}</b> : null}
-        </span>
+        </button>
       ))}
     </div>
   )

@@ -24,6 +24,10 @@ export function SearchScreen({
   onClearEvent,
   onSubmit,
   onOpenEvents,
+  onOpenChat,
+  onPlanWeekend,
+  history = [],
+  onOpenHistory,
   categories,
   loading
 }) {
@@ -85,6 +89,43 @@ export function SearchScreen({
         <h1>Куда поедем?</h1>
         <p>Соберём транспорт, событие и проживание в один маршрут.</p>
       </section>
+
+      <div className="hero-actions">
+        <button type="button" className="quick-action" onClick={onOpenChat}>
+          <span className="quick-icon"><Icon name="chat" size={19} /></span>
+          <span>
+            <b>Спросите словами</b>
+            <small>«Из Минска в Брест на выходные»</small>
+          </span>
+          <Icon name="chevronRight" size={16} />
+        </button>
+        <button type="button" className="quick-action" onClick={onPlanWeekend} disabled={loading}>
+          <span className="quick-icon quick-icon-amber"><Icon name="spark" size={19} /></span>
+          <span>
+            <b>Собери выходные</b>
+            <small>Случайное событие и маршрут</small>
+          </span>
+          <Icon name="chevronRight" size={16} />
+        </button>
+      </div>
+
+      {history.length ? (
+        <div className="recent-routes">
+          <span className="field-label">Недавние поездки</span>
+          <div className="chip-scroll">
+            {history.slice(0, 5).map((entry) => (
+              <button
+                key={entry.id}
+                type="button"
+                className="chip"
+                onClick={() => onOpenHistory?.(entry)}
+              >
+                {entry.form?.from || '—'} → {entry.form?.to || '—'}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       <form
         className="card search-card"

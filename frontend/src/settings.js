@@ -2,6 +2,7 @@ export const SETTINGS_KEY = 'storm-trip.settings.v1'
 
 export const defaultSettings = {
   theme: 'dark',
+  haptics: true,
   pushEnabled: false,
   pushOnResults: true
 }
@@ -23,8 +24,15 @@ export function saveSettings(settings) {
   }
 }
 
+export function resolveTheme(theme) {
+  if (theme === 'system') {
+    return window.matchMedia?.('(prefers-color-scheme: light)')?.matches ? 'light' : 'dark'
+  }
+  return theme === 'light' ? 'light' : 'dark'
+}
+
 export function applyTheme(theme) {
-  const next = theme === 'light' ? 'light' : 'dark'
+  const next = resolveTheme(theme)
   document.documentElement.dataset.theme = next
   document
     .querySelector('meta[name="theme-color"]')

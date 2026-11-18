@@ -1,15 +1,27 @@
 import { useEffect, useState } from 'react'
 import { api } from '../api.js'
+import { EventSheet } from '../components/EventSheet.jsx'
 import { Icon } from '../icons.jsx'
 import { eventDate, formatPrice } from '../format.js'
 
-function EventCard({ event, category, selected, onSelect }) {
+function EventCard({ event, category, selected, onSelect, onOpen }) {
   const [broken, setBroken] = useState(false)
   const date = eventDate(event.start)
   const price = formatPrice(event.price)
 
   return (
-    <article className={`event-card ${selected ? 'is-selected' : ''}`}>
+    <article
+      className={`event-card ${selected ? 'is-selected' : ''}`}
+      role="button"
+      tabIndex={0}
+      onClick={() => onOpen(event)}
+      onKeyDown={(clickEvent) => {
+        if (clickEvent.key === 'Enter' || clickEvent.key === ' ') {
+          clickEvent.preventDefault()
+          onOpen(event)
+        }
+      }}
+    >
       <div className="event-cover">
         {event.imageUrl && !broken ? (
           <img
@@ -37,14 +49,24 @@ function EventCard({ event, category, selected, onSelect }) {
           <span className="event-price">{price || 'цена не указана'}</span>
           <div className="event-actions">
             {event.url ? (
-              <a className="icon-button" href={event.url} target="_blank" rel="noreferrer" aria-label="Открыть событие">
+              <a
+                className="icon-button"
+                href={event.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Открыть событие"
+                onClick={(clickEvent) => clickEvent.stopPropagation()}
+              >
                 <Icon name="external" size={17} />
               </a>
             ) : null}
             <button
               type="button"
               className={`btn btn-small ${selected ? 'btn-soft' : 'btn-dark'}`}
-              onClick={() => onSelect(event)}
+              onClick={(clickEvent) => {
+                clickEvent.stopPropagation()
+                onSelect(event)
+              }}
             >
               {selected ? 'Выбрано' : 'В поездку'}
               {selected ? <Icon name="check" size={15} /> : null}
@@ -70,7 +92,7 @@ function EventSkeleton() {
   )
 }
 
-export function EventsScreen({ categories, selectedEvent, onSelectEvent }) {
+export function EventsScreen({ categories, selectedEvent, onSelectEvent, onNotify }) {
   const [category, setCategory] = useState('')
   const [query, setQuery] = useState('')
   const [events, setEvents] = useState([])
@@ -78,6 +100,7 @@ export function EventsScreen({ categories, selectedEvent, onSelectEvent }) {
   const [error, setError] = useState('')
   const [note, setNote] = useState('')
   const [reload, setReload] = useState(0)
+  const [detail, setDetail] = useState(null)
 
   const categoryLabels = Object.fromEntries(categories.map((item) => [item.id, item.label]))
 
@@ -180,6 +203,7 @@ export function EventsScreen({ categories, selectedEvent, onSelectEvent }) {
               category={categoryLabels[event.category] || (event.category?.startsWith('/') ? '' : event.category)}
               selected={selectedEvent?.id === event.id}
               onSelect={onSelectEvent}
+              onOpen={setDetail}
             />
           ))}
         </div>
@@ -210,6 +234,21 @@ export function EventsScreen({ categories, selectedEvent, onSelectEvent }) {
           )}
         </div>
       )}
+
+      <EventSheet
+        event={detail}
+        categoryLabel={
+          detail
+            ? categoryLabels[detail.category] || (detail.category?.startsWith('/') ? '' : detail.category)
+            : ''
+        }
+        onClose={() => setDetail(null)}
+        onSelect={(event) => {
+          setDetail(null)
+          onSelectEvent(event)
+        }}
+        onNotify={onNotify}
+      />
     </div>
   )
 }

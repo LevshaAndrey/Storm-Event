@@ -41,5 +41,16 @@ export const api = {
       headers: JSON_HEADERS,
       body: JSON.stringify(payload)
     })
+  },
+
+  chat({ message, userId }) {
+    const controller = new AbortController()
+    const timer = window.setTimeout(() => controller.abort(), 120000)
+    return request('/api/chat/json', {
+      method: 'POST',
+      headers: JSON_HEADERS,
+      body: JSON.stringify({ message, userId }),
+      signal: controller.signal
+    }).finally(() => window.clearTimeout(timer))
   }
 }

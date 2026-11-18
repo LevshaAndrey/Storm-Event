@@ -152,6 +152,52 @@ const icons = {
       <circle cx="12" cy="12" r="4" />
       <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19" />
     </>
+  ),
+  chat: (
+    <>
+      <path d="M20.5 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-4.6A8.5 8.5 0 1 1 20.5 11.5Z" />
+      <path d="M8 10h8M8 13.5h5" />
+    </>
+  ),
+  mic: (
+    <>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3M9 21h6" />
+    </>
+  ),
+  filter: (
+    <>
+      <path d="M3.5 6h17M6.5 12h11M10 18h4" />
+      <circle cx="8" cy="6" r="1.8" />
+      <circle cx="15" cy="12" r="1.8" />
+      <circle cx="12" cy="18" r="1.8" />
+    </>
+  ),
+  share: (
+    <>
+      <circle cx="6" cy="12" r="2.5" />
+      <circle cx="18" cy="6" r="2.5" />
+      <circle cx="18" cy="18" r="2.5" />
+      <path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6" />
+    </>
+  ),
+  calendarPlus: (
+    <>
+      <rect x="3.5" y="5" width="17" height="15.5" rx="3" />
+      <path d="M3.5 10h17M8 3v4M16 3v4M12 13v6M9 16h6" />
+    </>
+  ),
+  trash: (
+    <>
+      <path d="M4 7h16M9 7V4.5h6V7M6.5 7l1 13.5h9L17.5 7" />
+      <path d="M10 11v6M14 11v6" />
+    </>
+  ),
+  download: (
+    <>
+      <path d="M12 3v12M7 10l5 5 5-5" />
+      <path d="M4 20h16" />
+    </>
   )
 }
 
