@@ -245,7 +245,9 @@ export function ResultsScreen({
   onAdjust,
   onNotify,
   onOpenChat,
-  onSortChange
+  onSortChange,
+  fromHistory = false,
+  onBackToHistory
 }) {
   const [showAllOffers, setShowAllOffers] = useState(false)
   const [filters, setFilters] = useState({ ...emptyFilters })
@@ -351,6 +353,11 @@ export function ResultsScreen({
   return (
     <div className="screen results-screen">
       <section className="result-head">
+        {fromHistory ? (
+          <button type="button" className="back-link" onClick={onBackToHistory}>
+            <Icon name="arrowLeft" size={15} /> {t('К истории поездок')}
+          </button>
+        ) : null}
         <span className="eyebrow">результаты поиска</span>
         <h1>
           {from}

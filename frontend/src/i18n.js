@@ -351,6 +351,7 @@ const TABLE = {
     'Każde wyszukiwanie zapisuje się na urządzeniu — możesz tu wrócić bez internetu.'
   ],
   'История поездок': ['Гісторыя паездак', 'Trip history', 'Historia podróży'],
+  'К истории поездок': ['Да гісторыі паездак', 'Back to trip history', 'Wróć do historii podróży'],
   'Точно?': ['Дакладна?', 'Sure?', 'Na pewno?'],
   'без цены': ['без цаны', 'no price', 'bez ceny'],
   'Удалить поездку из истории': ['Выдаліць паездку з гісторыі', 'Delete trip from history', 'Usuń podróż z historii'],

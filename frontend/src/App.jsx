@@ -157,6 +157,7 @@ export default function App() {
   const [selectedEvent, setSelectedEvent] = useState(loadEvent)
   const [categories, setCategories] = useState(fallbackCategories)
   const [result, setResult] = useState(null)
+  const [historyResultOpen, setHistoryResultOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [toast, setToast] = useState(null)
@@ -285,10 +286,27 @@ export default function App() {
     setSettings((current) => ({ ...current, ...patch }))
   }, [])
 
-  const changeTab = useCallback((next) => {
-    haptic(6)
-    setTab(next)
+  const backToHistory = useCallback(() => {
+    setResult(null)
+    setError('')
+    setHistoryResultOpen(false)
+    setSelectedCombination(null)
+    window.scrollTo(0, 0)
   }, [])
+
+  const changeTab = useCallback(
+    (next) => {
+      haptic(6)
+      // Повторный тап по активной вкладке «Поездки» возвращает к списку истории,
+      // чтобы можно было открыть любую сохранённую поездку, а не только первую.
+      if (next === 'trips' && tab === 'trips' && result && !loading) {
+        backToHistory()
+        return
+      }
+      setTab(next)
+    },
+    [backToHistory, loading, result, tab]
+  )
 
   const setPush = useCallback(
     async (next) => {
@@ -352,6 +370,7 @@ export default function App() {
       setLoading(true)
       setError('')
       setResult(null)
+      setHistoryResultOpen(false)
       setTab('trips')
 
       try {
@@ -450,7 +469,9 @@ export default function App() {
       setForm({ ...initialForm(), ...entry.form })
       setSelectedEvent(null)
       setResult(entry.result)
+      setHistoryResultOpen(true)
       setError('')
+      setSelectedCombination(null)
       setTab('trips')
       haptic(8)
       window.scrollTo(0, 0)
@@ -617,6 +638,8 @@ export default function App() {
             onNotify={notify}
             onOpenChat={() => setChatOpen(true)}
             onSortChange={changeSort}
+            fromHistory={historyResultOpen}
+            onBackToHistory={backToHistory}
           />
         ) : null}
 

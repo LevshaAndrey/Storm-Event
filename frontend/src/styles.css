@@ -1438,6 +1438,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding: 12px 4px 0;
 }
 
+.back-link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  margin-bottom: 2px;
+  padding: 4px 8px 4px 4px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent-ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.back-link:active {
+  background: var(--accent-soft);
+}
+
 .result-head h1 {
   display: flex;
   align-items: center;
